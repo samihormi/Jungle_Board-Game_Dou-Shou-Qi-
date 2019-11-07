@@ -6,6 +6,6 @@ public class Application {
     public static void main(String[] args){
         // start playing the game
         GameController gc = new GameController();
-        System.out.println("i love mango");
+        System.out.println("i love man");
     }
 }
