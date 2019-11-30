@@ -2,9 +2,7 @@
 <module type="JAVA_MODULE" version="4">
   <component name="NewModuleRootManager" inherit-compiler-output="true">
     <exclude-output />
-    <content url="file://$MODULE_DIR$">
-      <sourceFolder url="file://$MODULE_DIR$/Jungle/SampleProject/src" isTestSource="false" />
-      <sourceFolder url="file://$MODULE_DIR$/Jungle/SampleProject/test" isTestSource="false" />
+    <content url="file://$MODULE_DIR$/Jungle/project">
       <sourceFolder url="file://$MODULE_DIR$/Jungle/project/test" isTestSource="false" />
       <sourceFolder url="file://$MODULE_DIR$/Jungle/project/src" isTestSource="false" />
     </content>
