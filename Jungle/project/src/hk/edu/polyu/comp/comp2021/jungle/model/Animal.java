@@ -6,13 +6,6 @@ public class Animal {
     private Player ply;
     private boolean isAlive;
 
-    public Animal(int rank, Position P, Player ply){
-        setRank(rank);
-        setP(P);
-        setPly(ply);
-        isAlive = true;
-    }
-
     public int getRank() {
         return rank;
     }
