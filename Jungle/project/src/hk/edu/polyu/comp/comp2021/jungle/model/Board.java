@@ -147,7 +147,9 @@ public class Board {
         blocks[8][4].setBlockType(2);
 
         blocks[0][3].setBlockType(3);
+        blocks[0][3].setPlayer(player2); //set player on goal block
         blocks[8][3].setBlockType(3);
+        blocks[8][3].setPlayer(player1);
 
         setBoard(blocks);
         //print();

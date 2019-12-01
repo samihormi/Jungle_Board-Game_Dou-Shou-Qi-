@@ -4,15 +4,17 @@ public class Block {
 
     private Animal a;
     private int blockType;//0=plain, 1=river, 2=trap, 3=goal(we have to consider the team)
-
+    private Player player; //to determine which player's goal
     public Block(){
         this.a=null;
         this.blockType=0;
+        this.player=null;
     }
 
     public Block(Animal a, int blockType){
         this.a = a;
         this.blockType= blockType;
+        this.player=null;
     }
 
     public Animal getA() {
@@ -29,5 +31,13 @@ public class Block {
 
     public void setBlockType(int blockType) {
         this.blockType = blockType;
+    }
+
+    public void setPlayer(Player player){
+        this.player=player;
+    }
+
+    public Player getPlayer(){
+        return player;
     }
 }

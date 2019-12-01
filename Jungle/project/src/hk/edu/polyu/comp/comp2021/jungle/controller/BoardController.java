@@ -6,7 +6,7 @@ import hk.edu.polyu.comp.comp2021.jungle.model.Player;
 import hk.edu.polyu.comp.comp2021.jungle.model.Position;
 
 public class BoardController {//0=plain, 1=river, 2=trap, 3=goal(w
-    public void moveAnimal(Position p1, Position p2, Board board){ //turn will consider the player. we don't have to deal with that here
+    public int moveAnimal(Position p1, Position p2, Board board){ //turn will consider the player. we don't have to deal with that here
         //isvalidmove() but there is exception
         Block[][] blocks = board.getBoard();
         if(Math.pow(p1.getX()-p2.getX(),2)+Math.pow(p1.getY()-p2.getY(),2)==1) //check distance = 1
@@ -17,6 +17,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal(w
                 }
                 else{ //empty
                     move(p1,p2,board);
+                    return 1;
                 }
             }
             else{//river
@@ -35,7 +36,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal(w
         }
 
 
-
+        return 0;
     }
 
     public void move(Position p1, Position p2, Board board){
