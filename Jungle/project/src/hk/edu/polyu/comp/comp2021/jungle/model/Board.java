@@ -158,7 +158,6 @@ public class Board {
     }
 
     public void setBoard(Block[][] board){
-
         this.board=board;
     }
 
