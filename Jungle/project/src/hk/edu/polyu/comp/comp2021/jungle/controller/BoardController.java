@@ -12,7 +12,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
         this.board=board;
         blocks = board.getBoard();
     }
-    public int moveAnimal(Position p1, Position p2){ //turn will consider the player. we don't have to deal with that here
+    public int moveRules(Position p1, Position p2){ //move:1, invalid move:0
         //isvalidmove() but there is exception
         if(Math.pow(p1.getX()-p2.getX(),2)+Math.pow(p1.getY()-p2.getY(),2)==1) //check distance = 1 -> exception when tiger cross the river
         {
