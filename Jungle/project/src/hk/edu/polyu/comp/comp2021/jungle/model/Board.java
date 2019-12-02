@@ -6,8 +6,6 @@ public class Board {
      * Calling Board constructor initializes a board
      * Board initialization can be moved if necessary(for using animal objects)
      *
-     * @param pl1 playerName1
-     * @param pl2 playerName2
      * @return Nothing
      */
     public Board(Player player1,Player player2){
@@ -150,7 +148,7 @@ public class Board {
         blocks[8][3].setPlayer(player1);
 
         setBoard(blocks);
-        //print();
+
     }
 
     public Block[][] getBoard() {

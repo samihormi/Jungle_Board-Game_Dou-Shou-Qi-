@@ -145,6 +145,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
+        System.out.println(p.getName()+"win");
         return true;
     }
 
