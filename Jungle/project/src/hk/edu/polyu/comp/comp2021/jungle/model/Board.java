@@ -10,15 +10,13 @@ public class Board {
      * @param pl2 playerName2
      * @return Nothing
      */
-    public Board(String pl1, String pl2){
+    public Board(Player player1,Player player2){
         Block[][] blocks = new Block[9][7];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 7; j++) {
                 blocks[i][j] = new Block();
             }
         }
-        Player player1 = new Player(pl1, 1);
-        Player player2 = new Player(pl2, 2);
         Position p;
         Animal rat1, rat2, cat1, cat2, wolf1, wolf2, dog1, dog2,
                 panther1, panther2, tiger1, tiger2, lion1, lion2,

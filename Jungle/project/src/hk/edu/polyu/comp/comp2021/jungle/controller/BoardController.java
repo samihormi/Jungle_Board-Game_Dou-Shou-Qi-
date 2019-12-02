@@ -6,10 +6,8 @@ import hk.edu.polyu.comp.comp2021.jungle.model.Player;
 import hk.edu.polyu.comp.comp2021.jungle.model.Position;
 
 public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
-    private Board board;
-    Block[][] blocks;
+    private Block[][] blocks;
     public BoardController(Board board){
-        this.board=board;
         blocks = board.getBoard();
     }
     public int moveRules(Position p1, Position p2){ //move:1, invalid move:0
@@ -79,7 +77,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
 
         return 0;
     }
-    public boolean checkThereIsRat(Position p,Position d,String x){
+    private boolean checkThereIsRat(Position p,Position d,String x){
         if(x.equals("X")){
             if(p.getX()==1||p.getX()==2){
                 for (int i = 3; i <= 5; i++) {
@@ -119,13 +117,35 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
         return false;
     }
 
-    public void move(Position p1, Position p2){
+    private void move(Position p1, Position p2){
         blocks[p2.getY()][p2.getX()].setA(blocks[p1.getY()][p1.getX()].getA());
         blocks[p1.getY()][p1.getX()].setA(null);
     }
-    public void eat(Position p1, Position p2){
+    private void eat(Position p1, Position p2){
         blocks[p2.getY()][p2.getX()].setA(blocks[p1.getY()][p1.getX()].getA());
         blocks[p1.getY()][p1.getX()].setA(null);
+    }
+
+    public boolean isEnd(){
+        Player p=null;
+        if(blocks[0][3].getA().getPly()!=blocks[0][3].getPlayer()){ //arrive den
+            return true;
+        }
+        else if(blocks[8][3].getA().getPly()!=blocks[8][3].getPlayer()){//arrive den
+            return true;
+        }
+
+        for(int i=0;i<9;i++){
+            for(int j=0;j<7;j++){
+                if(blocks[i][j].getA()!=null) {
+                    if (p == null && blocks[i][j].getA().getPly() != null)
+                        p = blocks[i][j].getA().getPly();
+                    if (blocks[i][j].getA().getPly() != p)
+                        return false;
+                }
+            }
+        }
+        return true;
     }
 
 }
