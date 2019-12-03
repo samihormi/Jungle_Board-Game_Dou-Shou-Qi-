@@ -10,9 +10,10 @@ public class Application {
         Scanner input = new Scanner(System.in);
         String playerName1 = input.next();
         String playerName2 = input.next();
-        Board board = new Board(playerName1,playerName2);
+      // Board board = new Board(playerName1,playerName2);
+        SBoard sbord = new SBoard();
         // start playing the game
-        Table table = new Table(board);
+        //Table table = new Table(sboard);
         //GameController gc = new GameController();
         //BoardController bc = new BoardController();
     }

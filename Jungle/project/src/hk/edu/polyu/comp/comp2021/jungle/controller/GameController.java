@@ -17,11 +17,11 @@ public class GameController {
         BoardController boardController =new BoardController(board);
 
         while(boardController.isEnd()){
-            Position[] p = getInputFromTable(player1); // p[0] = current location p[1]=destination
-            if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
+            //Position[] p = getInputFromTable(player1); // p[0] = current location p[1]=destination
+           // if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             {
                 turn = chageTurn(player1, player2,turn);
-                updateTable(board);
+             //   updateTable(board);
             }
 
         }
