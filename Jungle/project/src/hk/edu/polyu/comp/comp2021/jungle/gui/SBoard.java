@@ -3,6 +3,7 @@ package hk.edu.polyu.comp.comp2021.jungle.gui;
 import javax.swing.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import hk.edu.polyu.comp.comp2021.jungle.controller.GameController;
 
 public class SBoard {
     private final JFrame SFrame;
@@ -21,6 +22,13 @@ public class SBoard {
             @Override
             public void actionPerformed(ActionEvent e) {
                 isNewGame = true;
+                SFrame.setVisible(false);
+            }
+        });
+        loadGameButton.addActionListener(new ActionListener() {
+            @Override
+            public void actionPerformed(ActionEvent e) {
+                isLoadGame = true;
                 SFrame.setVisible(false);
             }
         });

@@ -1,6 +1,9 @@
 package hk.edu.polyu.comp.comp2021.jungle;
 
 import java.util.*;
+
+import hk.edu.polyu.comp.comp2021.jungle.Save.ResourceManager;
+import hk.edu.polyu.comp.comp2021.jungle.Save.SaveGame;
 import hk.edu.polyu.comp.comp2021.jungle.controller.*;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 import hk.edu.polyu.comp.comp2021.jungle.gui.*;
@@ -14,9 +17,8 @@ public class Application {
         while(!sBoard.isNewGame && !sBoard.isLoadGame){
             Thread.sleep(200);
         }
-        NBoard nBoard;
         if(sBoard.isNewGame){
-            nBoard = new NBoard();
+            NBoard nBoard = new NBoard();
             while(!nBoard.isGameStarted){
                 Thread.sleep(200);
             }
@@ -24,12 +26,20 @@ public class Application {
             player2.setName(nBoard.getName2());
         }
         else{
-            System.out.println("Here you load...");
+            GameController gc = new GameController(player1.getName(),player2.getName());
+            try {
+                SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
+                gc.loadGame(s1);
+            } catch (Exception e) {
+                e.printStackTrace();
+            }
+
+
         }
         Board board = new Board(player1,player2);
         // start playing the game
         Table table = new Table(board);
-        //GameController gc = new GameController();
-        //BoardController bc = new BoardController();
+        GameController gc = new GameController(player1.getName(),player2.getName());
+        BoardController bc = new BoardController(board);
     }
 }

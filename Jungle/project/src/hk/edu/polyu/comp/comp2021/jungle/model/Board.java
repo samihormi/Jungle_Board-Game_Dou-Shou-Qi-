@@ -159,6 +159,7 @@ public class Board {
         this.board=board;
     }
 
+
     /**
      * print is simply used for printing either animal ranks or field types
      * (just for testing)

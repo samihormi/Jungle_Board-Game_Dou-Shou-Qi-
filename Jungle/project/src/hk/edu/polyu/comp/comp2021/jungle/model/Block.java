@@ -6,9 +6,9 @@ public class Block {
     private int blockType;//0=plain, 1=river, 2=trap, 3=goal(we have to consider the team)
     private Player player; //to determine which player's goal
     public Block(){
-        this.a=null;
-        this.blockType=0;
-        this.player=null;
+        this.a = null;
+        this.blockType = 0;
+        this.player = null;
     }
 
     public Block(Animal a, int blockType){
