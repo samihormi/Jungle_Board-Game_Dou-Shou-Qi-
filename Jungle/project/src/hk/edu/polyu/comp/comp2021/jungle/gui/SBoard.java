@@ -10,6 +10,8 @@ public class SBoard {
     private JButton loadGameButton;
     private JPanel panelMain;
     private JButton OKButton;
+    public boolean isNewGame = false;
+    public boolean isLoadGame = false;
 
     public SBoard(){
         this.SFrame = new JFrame("Jungle Game");
@@ -18,7 +20,7 @@ public class SBoard {
         newGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                NBoard nBoard = new NBoard();
+                isNewGame = true;
                 SFrame.setVisible(false);
             }
         });
