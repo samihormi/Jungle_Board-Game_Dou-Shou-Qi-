@@ -28,7 +28,7 @@ public class Application {
         }
         else{
             Board board = new Board(player1,player2);
-            GameController gc = new GameController(player1,player2,board,player1);    
+            GameController gc = new GameController(player1,player2,board,player1);
             Table table;
             try {
                 SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
