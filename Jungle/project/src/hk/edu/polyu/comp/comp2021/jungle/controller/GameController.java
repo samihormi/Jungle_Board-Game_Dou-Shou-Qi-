@@ -35,6 +35,7 @@ public class GameController {
         BoardController boardController = new BoardController(board);
         Table table =new Table(board,player1,player2,player1);
         Position p[]=null;
+        /*
         while(boardController.isEnd()){
             while (!table.ready) {
                 p=table.getInputFromTable(turn); // p[0] = current location p[1]=destination
@@ -47,6 +48,7 @@ public class GameController {
             }
             table.setReady(false);
         }
+        */
 
     }
     public void saveGame(SaveGame s1){
