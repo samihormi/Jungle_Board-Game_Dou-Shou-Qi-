@@ -2,10 +2,7 @@ package hk.edu.polyu.comp.comp2021.jungle.gui;
 
 
 import hk.edu.polyu.comp.comp2021.jungle.controller.GameController;
-import hk.edu.polyu.comp.comp2021.jungle.model.Animal;
-import hk.edu.polyu.comp.comp2021.jungle.model.Block;
-import hk.edu.polyu.comp.comp2021.jungle.model.Board;
-import hk.edu.polyu.comp.comp2021.jungle.model.Player;
+import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 import javax.swing.*;
 import java.awt.*;
@@ -25,7 +22,6 @@ public class Table {
     private Color white = Color.decode("#FFFFFF");
     private Board board;
     private Player p1,p2,turn;
-
     public Table(Board board,Player player1, Player player2,Player turn){
         this.gameFrame = new JFrame("Jungle Game");
         this.gameFrame.setLayout(new BorderLayout());
