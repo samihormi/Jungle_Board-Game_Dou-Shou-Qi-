@@ -66,7 +66,7 @@ public class GameController {
             table.setFinished(false);
         }
         System.out.println("isend end");
-
+        JOptionPane.showMessageDialog(null,"Victory! " + turn.getName() + " won! Congratulations!");
     }
 
     public void saveGame(SaveGame s1){
