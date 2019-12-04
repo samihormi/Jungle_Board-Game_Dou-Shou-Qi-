@@ -17,7 +17,15 @@ public class Application {
         while(!sBoard.isNewGame && !sBoard.isLoadGame){
             Thread.sleep(200);
         }
-        if(sBoard.isLoadGame){
+        if(sBoard.isNewGame){
+            NBoard nBoard = new NBoard();
+            while(!nBoard.isGameStarted){
+                Thread.sleep(200);
+            }
+            player1.setName(nBoard.getName1());
+            player2.setName(nBoard.getName2());
+        }
+        else{
             GameController gc = new GameController(player1.getName(),player2.getName());
             Table table;
             try {
@@ -27,21 +35,11 @@ public class Application {
                 e.printStackTrace();
             }
 
-        }
-        else {
-            NBoard nBoard = new NBoard();
-            while (!nBoard.isGameStarted) {
-                Thread.sleep(200);
-            }
-            player1.setName(nBoard.getName1());
-            player2.setName(nBoard.getName2());
-            Board board = new Board(player1, player2);
-            // start playing the game
-
-            Table table = new Table(board, player1, player2, player1);
-            Block[][] blocks = board.getBoard();
-            GameController gc = new GameController(player1.getName(), player2.getName());
 
         }
+        Board board = new Board(player1,player2);
+        GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
+
+
     }
 }
