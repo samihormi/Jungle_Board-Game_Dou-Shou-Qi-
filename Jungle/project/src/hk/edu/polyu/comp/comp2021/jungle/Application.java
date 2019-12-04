@@ -36,19 +36,20 @@ public class Application {
             }
             player1.setName(nBoard.getName1());
             player2.setName(nBoard.getName2());
-            Board board = new Board(player1, player2);
-            GameController gc = new GameController(player1.getName(), player2.getName());// start playing the game
-        } else {
-            Board board = new Board(player1, player2);
-            GameController gc = new GameController(player1, player2, board, player1);
-            Table table;
+            GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
+        }
+        else{
+            Board board = new Board(player1,player2);
+            //GameController gc = new GameController(board,player1,player2,player1); // wrong
+            GameController gc = new GameController(player1,player2,board,player1);
+            Table table = null;
             try {
                 SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
                 table = gc.loadGame(s1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-
+            gc.StartGame(table);
         }
 
     }

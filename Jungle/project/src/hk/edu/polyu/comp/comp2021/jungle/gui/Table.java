@@ -24,11 +24,12 @@ public class Table {
     private Color white = Color.decode("#FFFFFF");
     private Board board;
     private Player p1,p2,turn;
-    private Position[] position;
+    private Position[] position=new Position[2];
     private boolean isFrist = false;
     private boolean isFinished = false;
     private final int width = 80;
     private final int height = 60;
+    private JLabel turnLabel;
     String imgPath = Table.class.getResource("").getPath();
 
     /**
@@ -46,7 +47,8 @@ public class Table {
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
         this.boardPanel = new BoardPanel(board);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-        this.gameFrame.add(new JLabel("Turn: "+ turn.getName()),BorderLayout.SOUTH);
+        turnLabel=new JLabel("Turn: "+ turn.getName());
+        this.gameFrame.add(turnLabel,BorderLayout.SOUTH);
         this.gameFrame.setVisible(true);
         this.board = board;
         this.turn = turn;
@@ -60,10 +62,17 @@ public class Table {
      *  Updates board according to the movement
      */
     public void updateTable(Board board){
+        if(turn.getId()==p1.getId())
+            turn=p2;
+        else
+            turn=p1;
         this.board=board;
         gameFrame.remove(boardPanel);
+        gameFrame.remove(turnLabel);
         this.boardPanel = new BoardPanel(board);
+        this.turnLabel = new JLabel("Turn: "+ turn.getName());
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+        this.gameFrame.add(turnLabel,BorderLayout.SOUTH);
         gameFrame.revalidate();
         gameFrame.repaint();
 
@@ -108,7 +117,7 @@ public class Table {
             this.boardTiles = new ArrayList<>();
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 7; j++) {
-                    final TilePanel tilePanel = new TilePanel(this, i, j, board);
+                    final TilePanel tilePanel = new TilePanel(this, j, i, board);
                     this.boardTiles.add(tilePanel);
                     add(tilePanel);
 
@@ -141,6 +150,7 @@ public class Table {
             this.setBorder(BorderFactory.createLineBorder(Color.black));
             validate();
         }
+        
 
 
         /**
@@ -149,7 +159,7 @@ public class Table {
          */
         private void assignTileColor(Board board) {
             Block[][] blocks = board.getBoard();
-            switch (blocks[tileX][tileY].getBlockType()) {
+            switch (blocks[tileY][tileX].getBlockType()) {
                 case 0: {
                     setBackground(plainTileColor);
                     break;
@@ -186,24 +196,17 @@ public class Table {
          */
         public void assignAnimal(Board board) {
             Block[][] blocks = board.getBoard();
-            if (blocks[tileX][tileY].getA() == null) {
+            if (blocks[tileY][tileX].getA() == null) {
                 return;
             }
-            switch (blocks[tileX][tileY].getA().getRank()) {
+            switch (blocks[tileY][tileX].getA().getRank()) {
                 case 1: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
 
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Rat.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
-                        label.addMouseListener(new MouseAdapter() {
-                            @Override
-                            public void mouseClicked(MouseEvent e) {
-                                int x =blocks[tileX][tileY].getA().getP().getX();
-                                int y =blocks[tileX][tileY].getA().getP().getY();
-                                System.out.println("x:"+x+" y:"+y);
-                            }
-                        });
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
 
 
@@ -217,7 +220,7 @@ public class Table {
                     break;
                 }
                 case 2: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Cat.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -233,7 +236,7 @@ public class Table {
                     break;
                 }
                 case 3: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Dog.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -250,7 +253,7 @@ public class Table {
                     break;
                 }
                 case 4: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Wolf.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -268,7 +271,7 @@ public class Table {
                     break;
                 }
                 case 5: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Leopard.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -285,7 +288,7 @@ public class Table {
                     break;
                 }
                 case 6: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Tiger.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -302,7 +305,7 @@ public class Table {
                     break;
                 }
                 case 7: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Lion.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -318,7 +321,7 @@ public class Table {
                     break;
                 }
                 case 8: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Elephant.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -348,18 +351,8 @@ public class Table {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-                System.out.println("mouseClicked");
-                JPanel panel = (JPanel)e.getSource();
-                if(!isFrist) {
-                    position[0] = new Position(tileY, tileX);
-                    System.out.println(position[0]);
-                    isFrist=false;
-                }
-                else{
-                    position[1] = new Position(tileY,tileX);
-                    System.out.println(position[1]);
-                }
-                isFinished=true;
+
+
 
 
             }
@@ -371,7 +364,22 @@ public class Table {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-
+                System.out.println("mouseClicked");
+                //JPanel panel = (JPanel)e.getSource();
+                if(!isFrist) {
+                    if(board.getBoard()[tileY][tileX].getA()!=null&&board.getBoard()[tileY][tileX].getA().getPly().getId()==turn.getId()){
+                        System.out.println(tileY+","+tileX);
+                        position[0] = new Position(tileY, tileX);
+                        isFrist=true;
+                    }
+                }
+                else{
+                    System.out.println(tileY+","+tileX);
+                    position[1] = new Position(tileY,tileX);
+                    isFinished=true;
+                    System.out.println("input finish");
+                    isFrist=false;
+                }
             }
 
             @Override
@@ -396,8 +404,21 @@ public class Table {
         return position;
     }
 
-
-
+    public boolean isFrist() {
+        return isFrist;
     }
+
+    public void setFrist(boolean frist) {
+        isFrist = frist;
+    }
+
+    public boolean isFinished() {
+        return isFinished;
+    }
+
+    public void setFinished(boolean finished) {
+        isFinished = finished;
+    }
+}
 
 

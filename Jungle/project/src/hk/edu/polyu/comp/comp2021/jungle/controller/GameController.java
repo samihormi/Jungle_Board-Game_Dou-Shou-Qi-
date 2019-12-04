@@ -22,9 +22,10 @@ public class GameController {
      */
     public GameController(String player1_name, String player2_name) {
         try {
-            StartGame(player1_name, player2_name);
+            prepareStartGame(player1_name, player2_name);
         } catch (InterruptedException e) {
         }
+    }
 
     }
 
@@ -42,6 +43,13 @@ public class GameController {
         this.turn = turn;
     }
 
+    public GameController(Board board,Player player1,Player player2, Player turn) {
+        this.board = board;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.turn = turn;
+        SaveGame s1 = new SaveGame(board,player1,player2,turn);
+
     /**
      *
      * @param player1 first player
@@ -55,36 +63,36 @@ public class GameController {
         saveGame(s1);
     }
 
+    public void prepareStartGame(String player1_name,String player2_name) throws InterruptedException{
+
     /**
      *
      * @param player1_name first player's name
      * @param player2_name second player's name
      * @throws InterruptedException
      */
-    public void StartGame(String player1_name, String player2_name) throws InterruptedException {
-        player1 = new Player(player1_name, 1);
-        player2 = new Player(player2_name, 2);
-        turn = player1;
-        board = new Board(player1, player2);
-
+    public void StartGame(Table table) throws InterruptedException{
         BoardController boardController = new BoardController(board);
-        Table table = new Table(board, player1, player2, player1);
-        Position p[] = null;
-        /*
-        while(boardController.isEnd()){
-            while (!table.ready) {
+
+        Position p[]=null;
+
+        while(!boardController.isEnd()){
+            System.out.println("turn:"+turn.getId());
+            while (!table.isFinished()) {
                 p=table.getInputFromTable(turn); // p[0] = current location p[1]=destination
                 Thread.sleep(200);
             }
+            System.out.println("p[o]xy:("+p[0].getX()+","+p[0].getY()+") p[1]xy("+p[1].getX()+","+p[1].getY()+")");
             if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             {
+                board.setBoard(boardController.getBlocks());
                 turn = chageTurn(player1, player2,turn);
                 table.updateTable(board);
             }
-            table.setReady(false);
+            table.setFinished(false);
         }
-        */
-
+        System.out.println("isend end");
+        JOptionPane.showMessageDialog(null,"Victory! " + turn.getName() + " won! Congratulations!");
     }
 
     /**
