@@ -129,11 +129,15 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
 
     public boolean isEnd(){
         Player p=null;
-        if(blocks[0][3].getA().getPly()!=blocks[0][3].getPlayer()){ //arrive den
-            return true;
+        if(blocks[0][3].getA()!=null) {
+            if (blocks[0][3].getA().getPly() != blocks[0][3].getPlayer()) { //arrive den
+                return true;
+            }
         }
-        else if(blocks[8][3].getA().getPly()!=blocks[8][3].getPlayer()){//arrive den
-            return true;
+        else if(blocks[8][3].getA()!=null){
+            if(blocks[8][3].getA().getPly()!=blocks[8][3].getPlayer()){//arrive den
+                return true;
+            }
         }
 
         for(int i=0;i<9;i++){

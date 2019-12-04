@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
-public class Player {
+public class Player implements java.io.Serializable{
     private String name;
     private int id;
 

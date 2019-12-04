@@ -12,8 +12,8 @@ public class NBoard {
     private JTextField playerName1;
     private JPanel panelMain;
     private JButton startGameButton;
-    private String Name1;
-    private String Name2;
+    private String Name1 = "";
+    private String Name2 = "";
     public boolean isGameStarted = false;
 
     public NBoard(){
@@ -26,8 +26,12 @@ public class NBoard {
         startGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                Name1 = playerName1.getText();
-                Name2 = playerName2.getText();
+                if(playerName1.getText() != null){
+                    Name1 = playerName1.getText();
+                }
+                if(playerName2.getText() != null){
+                    Name2 = playerName2.getText();
+                }
                 isGameStarted = true;
                 NFrame.setVisible(false);
             }

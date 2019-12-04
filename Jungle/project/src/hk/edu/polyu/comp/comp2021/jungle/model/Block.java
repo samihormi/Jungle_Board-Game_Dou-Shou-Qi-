@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
-public class Block {
+public class Block implements java.io.Serializable{
 
     private Animal a;
     private int blockType;//0=plain, 1=river, 2=trap, 3=goal(we have to consider the team)
