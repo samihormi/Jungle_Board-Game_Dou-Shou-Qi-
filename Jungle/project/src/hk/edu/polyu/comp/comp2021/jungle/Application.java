@@ -24,9 +24,12 @@ public class Application {
             }
             player1.setName(nBoard.getName1());
             player2.setName(nBoard.getName2());
+            Board board = new Board(player1,player2);
+            GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
         }
         else{
-            GameController gc = new GameController(player1.getName(),player2.getName());
+            Board board = new Board(player1,player2);
+            GameController gc = new GameController(player1,player2,board,player1);
             Table table;
             try {
                 SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
@@ -35,11 +38,7 @@ public class Application {
                 e.printStackTrace();
             }
 
-
         }
-        Board board = new Board(player1,player2);
-        GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
-
 
     }
 }

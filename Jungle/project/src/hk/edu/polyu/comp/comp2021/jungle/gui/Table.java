@@ -29,6 +29,7 @@ public class Table {
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
         this.boardPanel = new BoardPanel(board);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+        this.gameFrame.add(new JLabel("Turn: "+ turn.getName()),BorderLayout.SOUTH);
         this.gameFrame.setVisible(true);
         this.board = board;
         this.turn = turn;

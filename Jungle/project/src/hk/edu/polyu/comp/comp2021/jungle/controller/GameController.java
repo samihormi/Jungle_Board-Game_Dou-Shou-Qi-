@@ -17,6 +17,12 @@ public class GameController {
         }catch (InterruptedException e){}
 
     }
+    public GameController(Player player1,Player player2, Board board, Player turn){
+        this.board = board;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.turn = turn;
+    }
     public GameController(Board board,Player player1,Player player2, Player turn) {
         this.board = board;
         this.player1 = player1;
@@ -26,14 +32,13 @@ public class GameController {
         saveGame(s1);
     }
     public void StartGame(String player1_name,String player2_name) throws InterruptedException{
-
         player1 = new Player(player1_name, 1);
         player2 = new Player(player2_name, 2);
         turn = player1;
         board = new Board(player1,player2);
 
         BoardController boardController = new BoardController(board);
-        Table table =new Table(board,player1,player2,player1);
+        Table table = new Table(board,player1,player2,player1);
         Position p[]=null;
         /*
         while(boardController.isEnd()){
@@ -61,6 +66,7 @@ public class GameController {
 
     public Table loadGame(SaveGame s1)  {
         Table loadedGame;
+        BoardController boardController = new BoardController(board);
         try {
             board.setBoard(s1.board.getBoard());
             player1.setId(s1.p1.getId());
