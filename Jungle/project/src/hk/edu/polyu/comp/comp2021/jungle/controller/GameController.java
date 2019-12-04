@@ -36,20 +36,18 @@ public class GameController {
         Position p[]=null;
 
         while(!boardController.isEnd()){
+            System.out.println("turn:"+turn.getId());
             while (!table.isFinished()) {
                 p=table.getInputFromTable(turn); // p[0] = current location p[1]=destination
                 Thread.sleep(200);
             }
-            System.out.println("p[o].x:"+p[0].getX()+" y:"+p[0].getY()+" p[1].x:"+p[1].getX()+" p[1].y:"+p[1].getY());
-            //if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
-            //{
-                Block[][] nw = board.getBoard();
-                nw[p[1].getY()][p[1].getX()].setA(board.getBoard()[p[0].getY()][p[0].getX()].getA());
-                nw[p[0].getY()][p[0].getX()].setA(null);
-                board.setBoard(nw);
+            System.out.println("p[o]xy:("+p[0].getX()+","+p[0].getY()+") p[1]xy("+p[1].getX()+","+p[1].getY()+")");
+            if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
+            {
+                board.setBoard(boardController.getBlocks());
                 turn = chageTurn(player1, player2,turn);
                 table.updateTable(board);
-            //}
+            }
             table.setFinished(false);
         }
         System.out.println("isend end");
@@ -83,7 +81,7 @@ public class GameController {
     }
 
     public Player chageTurn(Player p1,Player p2,Player turn){
-        if(turn.equals(p1))
+        if(turn.getId()==p1.getId())
             return p2;
         else
             return p1;

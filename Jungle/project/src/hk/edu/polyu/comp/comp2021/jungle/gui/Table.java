@@ -47,7 +47,10 @@ public class Table {
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
         gameFrame.revalidate();
         gameFrame.repaint();
-
+        if(turn.getId()==p1.getId())
+            turn=p2;
+        else
+            turn=p1;
     }
 
     public JMenuBar createTableMenuBar(){
@@ -314,9 +317,11 @@ public class Table {
                 System.out.println("mouseClicked");
                 //JPanel panel = (JPanel)e.getSource();
                 if(!isFrist) {
-                    System.out.println(tileY+","+tileX);
-                    position[0] = new Position(tileY, tileX);
-                    isFrist=true;
+                    if(board.getBoard()[tileY][tileX].getA()!=null&&board.getBoard()[tileY][tileX].getA().getPly().getId()==turn.getId()){
+                        System.out.println(tileY+","+tileX);
+                        position[0] = new Position(tileY, tileX);
+                        isFrist=true;
+                    }
                 }
                 else{
                     System.out.println(tileY+","+tileX);
