@@ -78,7 +78,7 @@ public class Table {
             this.boardTiles = new ArrayList<>();
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 7; j++) {
-                    final TilePanel tilePanel = new TilePanel(this, i, j, board);
+                    final TilePanel tilePanel = new TilePanel(this, j, i, board);
                     this.boardTiles.add(tilePanel);
                     add(tilePanel);
 
@@ -96,7 +96,7 @@ public class Table {
 
 
         TilePanel(final BoardPanel boardPanel,
-                  final int tileY, final int tileX,
+                  final int tileX, final int tileY,
                   Board board) {
             super(new GridBagLayout());
             this.tileX = tileX;
@@ -114,7 +114,7 @@ public class Table {
 
         private void assignTileColor(Board board) {
             Block[][] blocks = board.getBoard();
-            switch (blocks[tileX][tileY].getBlockType()) {
+            switch (blocks[tileY][tileX].getBlockType()) {
                 case 0: {
                     setBackground(plainTileColor);
                     break;
@@ -147,12 +147,12 @@ public class Table {
 
         public void assignAnimal(Board board) {
             Block[][] blocks = board.getBoard();
-            if (blocks[tileX][tileY].getA() == null) {
+            if (blocks[tileY][tileX].getA() == null) {
                 return;
             }
-            switch (blocks[tileX][tileY].getA().getRank()) {
+            switch (blocks[tileY][tileX].getA().getRank()) {
                 case 1: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
 
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Rat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
@@ -171,7 +171,7 @@ public class Table {
                     break;
                 }
                 case 2: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Cat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -187,7 +187,7 @@ public class Table {
                     break;
                 }
                 case 3: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Dog.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -204,7 +204,7 @@ public class Table {
                     break;
                 }
                 case 4: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Wolf.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -222,7 +222,7 @@ public class Table {
                     break;
                 }
                 case 5: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Leopard.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -239,7 +239,7 @@ public class Table {
                     break;
                 }
                 case 6: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Tiger.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -256,7 +256,7 @@ public class Table {
                     break;
                 }
                 case 7: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Lion.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
@@ -272,7 +272,7 @@ public class Table {
                     break;
                 }
                 case 8: {
-                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
+                    if (blocks[tileY][tileX].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
                         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Elephant.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);

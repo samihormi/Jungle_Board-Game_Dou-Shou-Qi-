@@ -44,8 +44,8 @@ public class GameController {
             //if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             //{
                 Block[][] nw = board.getBoard();
-                nw[p[1].getX()][p[1].getY()].setA(board.getBoard()[p[0].getX()][p[0].getY()].getA());
-                nw[p[0].getX()][p[0].getY()].setA(null);
+                nw[p[1].getY()][p[1].getX()].setA(board.getBoard()[p[0].getY()][p[0].getX()].getA());
+                nw[p[0].getY()][p[0].getX()].setA(null);
                 board.setBoard(nw);
                 turn = chageTurn(player1, player2,turn);
                 table.updateTable(board);
