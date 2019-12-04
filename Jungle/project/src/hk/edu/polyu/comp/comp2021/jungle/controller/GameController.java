@@ -27,6 +27,7 @@ public class GameController {
         player2 = new Player(player2_name, 2);
         turn = player1;
         board = new Board(player1,player2);
+
         BoardController boardController = new BoardController(board);
         /*
         while(boardController.isEnd()){
