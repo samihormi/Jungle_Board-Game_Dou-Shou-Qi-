@@ -19,16 +19,9 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
             if (blocks[p2.getY()][p2.getX()].getBlockType() != 1) {//not river
                 if (blocks[p2.getY()][p2.getX()].getA() != null) { //if there is any enemy
                     if (blocks[p2.getY()][p2.getX()].getBlockType() != 2) { //if it is not trap
-                        if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
+                        if (blocks[p1.getY()][p1.getX()].getA().getRank() == 1 && blocks[p2.getY()][p2.getX()].getA().getRank() == 8)//rat to elephant
                         {
-                            if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
-                                eat(p1, p2);
-                                return 1;
-                            }
-                        } else if (blocks[p1.getY()][p1.getX()].getA().getRank() == 1 && blocks[p2.getY()][p2.getX()].getA().getRank() == 8)//rat to elephant
-                        {
-                            if (!((blocks[p1.getY()][p1.getX()].getBlockType() == 1 && blocks[p2.getY()][p2.getX()].getBlockType() != 1) //river to land
-                                    || (blocks[p1.getY()][p1.getX()].getBlockType() != 1 && blocks[p2.getY()][p2.getX()].getBlockType() == 1))) // land to river
+                            if (!((blocks[p1.getY()][p1.getX()].getBlockType() == 1 && blocks[p2.getY()][p2.getX()].getBlockType() != 1))) // river to land
                             {
                                 if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()){
                                     eat(p1, p2);
@@ -36,6 +29,21 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                                 }
                             }
 
+                        }
+                        else if(blocks[p1.getY()][p1.getX()].getA().getRank() == 1){
+                            if(blocks[p1.getY()][p1.getX()].getBlockType()!=1){
+                                if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()){
+                                    eat(p1, p2);
+                                    return 1;
+                                }
+                            }
+                        }
+                        else if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
+                        {
+                            if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
+                                eat(p1, p2);
+                                return 1;
+                            }
                         }
 
                     } else { //trap
@@ -49,11 +57,18 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                     return 1;
                 }
             } else {//river
-                if (blocks[p1.getY()][p1.getX()].getA().getRank() == 1)
-                    if (blocks[p2.getY()][p2.getX()].getA() != null) {
+                if (blocks[p1.getY()][p1.getX()].getA().getRank() == 1) {
+                    if (blocks[p2.getY()][p2.getX()].getA()== null) {
                         move(p1, p2);
                         return 1;
                     }
+                    else{
+                        if(blocks[p1.getY()][p1.getX()].getBlockType()==1){
+                            eat(p1,p2);
+                            return 1;
+                        }
+                    }
+                }
             }
         } else if (((p1.getX() - p2.getX()) == 0 && (Math.pow(p1.getY() - p2.getY(), 2)) == 16)) {
             if (blocks[p1.getY()][p1.getX()].getA().getRank() == 6 || blocks[p1.getY()][p1.getX()].getA().getRank() == 7) { //if tiger or lion
