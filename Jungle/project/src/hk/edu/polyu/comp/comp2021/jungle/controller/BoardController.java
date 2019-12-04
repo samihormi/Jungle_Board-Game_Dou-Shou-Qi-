@@ -131,16 +131,16 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
             if(p.getX()==1||p.getX()==2){
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 1; j <= 2; j++) {
-                        if(blocks[i][j].getA()!=null)
-                            return true;
+                        if(blocks[i][j].getA()!=null){
+                            return true;}
                     }
                 }
             }
             else{
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 4; j <= 5; j++) {
-                        if(blocks[i][j].getA()!=null)
-                            return true;
+                        if(blocks[i][j].getA()!=null){
+                            return true;}
                     }
                 }
             }
@@ -149,16 +149,16 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
             if((p.getX()+d.getX())/2==1){
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 1; j <= 2; j++) {
-                        if(blocks[i][j].getA()!=null)
-                            return true;
+                        if(blocks[i][j].getA()!=null){
+                            return true;}
                     }
                 }
             }
             else{
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 4; j <= 5; j++) {
-                        if(blocks[i][j].getA()!=null)
-                            return true;
+                        if(blocks[i][j].getA()!=null){
+                            return true;}
                     }
                 }
             }

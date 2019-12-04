@@ -21,6 +21,7 @@ public class Table {
     private static final Dimension TILE_PANEL_DIMENSION = new Dimension(10, 10);
     private Color plainTileColor = Color.decode("#FFFACD");
     private Color riverTileColor = Color.decode("#0080FF");
+    private Color trapColor = Color.decode("#663300");
     private Color white = Color.decode("#FFFFFF");
     private Board board;
     private Player p1,p2,turn;
@@ -170,18 +171,17 @@ public class Table {
                     break;
                 }
                 case 2: {
-                    setBackground(white);
-                    JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/trap.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+                    setBackground(trapColor);
+                    /*JLabel label = new JLabel();
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/trap.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
-
-                    add(label);
+                    add(label);*/
                     break;
                 }
                 case 3: {
                     setBackground(white);
                     JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/den.png").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/den.jpg").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
 
                     add(label);
