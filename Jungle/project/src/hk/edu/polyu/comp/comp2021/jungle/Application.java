@@ -40,6 +40,8 @@ public class Application {
         // start playing the game
 
         Table table = new Table(board,player1,player2,player1);
+        board.getBoard()[6][0].setA(null);
+        table.updateTable(board);
         Block[][] blocks = board.getBoard();
         GameController gc = new GameController(player1.getName(),player2.getName());
 

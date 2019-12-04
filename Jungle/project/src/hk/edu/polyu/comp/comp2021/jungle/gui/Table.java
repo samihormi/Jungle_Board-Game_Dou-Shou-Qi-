@@ -11,7 +11,7 @@ import java.util.List;
 
 public class Table {
     private final JFrame gameFrame;
-    private final BoardPanel boardPanel;
+    private BoardPanel boardPanel;
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(600, 600);
     private static final Dimension BOARD_PANEL_DIMENSION = new Dimension(400, 350);
     private static final Dimension TILE_PANEL_DIMENSION = new Dimension(10, 10);
@@ -34,6 +34,15 @@ public class Table {
         this.turn = turn;
         p1 = player1;
         p2 = player2;
+
+    }
+    public void updateTable(Board board){
+        this.board=board;
+        gameFrame.remove(boardPanel);
+        this.boardPanel = new BoardPanel(board);
+        this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+        gameFrame.revalidate();
+        gameFrame.repaint();
 
     }
 
