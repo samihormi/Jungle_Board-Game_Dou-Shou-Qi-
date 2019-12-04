@@ -6,6 +6,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 public class NBoard {
+    private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(400, 200);
     private final JFrame NFrame;
     private JTextField playerName2;
     private JTextField playerName1;
@@ -19,6 +20,7 @@ public class NBoard {
         this.NFrame = new JFrame("Jungle Game");
         NFrame.setContentPane(panelMain);
         NFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+        NFrame.setPreferredSize(OUTER_FRAME_DIMENSION);
         NFrame.pack();
         NFrame.setVisible(true);
         startGameButton.addActionListener(new ActionListener() {
