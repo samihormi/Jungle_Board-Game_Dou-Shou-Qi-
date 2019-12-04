@@ -6,6 +6,7 @@ import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 import javax.swing.*;
 import java.awt.*;
+import java.awt.event.*;
 import java.util.*;
 import java.util.List;
 
@@ -20,6 +21,9 @@ public class Table {
     private Color white = Color.decode("#FFFFFF");
     private Board board;
     private Player p1,p2,turn;
+    private Position[] position;
+    private boolean isFrist = false;
+    private boolean isFinished = false;
     String imgPath = Table.class.getResource("").getPath();
     public Table(Board board,Player player1, Player player2,Player turn){
         this.gameFrame = new JFrame("Jungle Game");
@@ -34,7 +38,6 @@ public class Table {
         this.turn = turn;
         p1 = player1;
         p2 = player2;
-
     }
 
     public JMenuBar createTableMenuBar(){
@@ -68,6 +71,7 @@ public class Table {
                     final TilePanel tilePanel = new TilePanel(this, i, j, board);
                     this.boardTiles.add(tilePanel);
                     add(tilePanel);
+
                 }
             }
             setPreferredSize(BOARD_PANEL_DIMENSION);
@@ -75,115 +79,138 @@ public class Table {
         }
     }
 
-    private class TilePanel extends JPanel{
+    private class TilePanel extends JPanel {
         private final int tileX;
         private final int tileY;
 
+
+
         TilePanel(final BoardPanel boardPanel,
                   final int tileX, final int tileY,
-                  Board board){
+                  Board board) {
             super(new GridBagLayout());
             this.tileX = tileX;
             this.tileY = tileY;
+            this.addMouseListener(new MyMouseListener());
             setPreferredSize(TILE_PANEL_DIMENSION);
             assignTileColor(board);
             assignAnimal(board);
             this.setBorder(BorderFactory.createLineBorder(Color.black));
             validate();
         }
+        
+
 
         private void assignTileColor(Board board) {
             Block[][] blocks = board.getBoard();
-            switch(blocks[tileX][tileY].getBlockType()){
-                case 0:{
+            switch (blocks[tileX][tileY].getBlockType()) {
+                case 0: {
                     setBackground(plainTileColor);
                     break;
                 }
-                case 1:{
+                case 1: {
                     setBackground(riverTileColor);
 
                     break;
                 }
-                case 2:{
+                case 2: {
                     setBackground(white);
                     JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/trap.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/trap.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
+
                     add(label);
                     break;
                 }
-                case 3:{
+                case 3: {
                     setBackground(white);
                     JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/den.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/den.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
+
                     add(label);
                     break;
                 }
             }
         }
 
-        public void assignAnimal(Board board){
+        public void assignAnimal(Board board) {
             Block[][] blocks = board.getBoard();
-            if(blocks[tileX][tileY].getA() == null) {
+            if (blocks[tileX][tileY].getA() == null) {
                 return;
             }
-            System.out.println(tileX+","+tileY+"->"+blocks[tileX][tileY].getA().getRank()+" ply:"+blocks[tileX][tileY].getA().getPly().equals(p2));
-            switch(blocks[tileX][tileY].getA().getRank()) {
+            switch (blocks[tileX][tileY].getA().getRank()) {
                 case 1: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
 
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Rat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Rat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MouseAdapter() {
+                            @Override
+                            public void mouseClicked(MouseEvent e) {
+                                int x =blocks[tileX][tileY].getA().getP().getX();
+                                int y =blocks[tileX][tileY].getA().getP().getY();
+                                System.out.println("x:"+x+" y:"+y);
+                            }
+                        });
                         add(label);
+
+
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Rat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Rat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
                     break;
                 }
                 case 2: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Cat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Cat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Cat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Cat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
                     break;
                 }
                 case 3: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Dog.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Dog.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Dog2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Dog2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
 
                     break;
                 }
                 case 4: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Wolf.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Wolf.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Wolf2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Wolf2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
 
@@ -191,67 +218,127 @@ public class Table {
                     break;
                 }
                 case 5: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Leopard.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Leopard.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Leopard2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Leopard2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
 
                     break;
                 }
                 case 6: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Tiger.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Tiger.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Tiger2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Tiger2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
 
                     break;
                 }
                 case 7: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Lion.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Lion.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Lion2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Lion2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
                     break;
                 }
                 case 8: {
-                    if (blocks[tileX][tileY].getA().getPly().getId()==1) {
+                    if (blocks[tileX][tileY].getA().getPly().getId() == 1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER1/Elephant.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER1/Elephant.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
+
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath+"/sources/animals/PLAYER2/Elephant2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/animals/PLAYER2/Elephant2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
+                        label.addMouseListener(new MyMouseListener());
                         add(label);
                     }
                     break;
                 }
-            }
+
 
             }
+
+
         }
+        class MyMouseListener implements MouseListener{
+
+            @Override
+            public void mouseClicked(MouseEvent e) {
+                System.out.println("mouseClicked");
+                JPanel panel = (JPanel)e.getSource();
+                if(!isFrist) {
+                    position[0] = new Position(tileY, tileX);
+                    System.out.println(position[0]);
+                    isFrist=false;
+                }
+                else{
+                    position[1] = new Position(tileY,tileX);
+                    System.out.println(position[1]);
+                }
+                isFinished=true;
+
+
+            }
+
+            @Override
+            public void mousePressed(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseReleased(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseEntered(MouseEvent e) {
+
+            }
+
+            @Override
+            public void mouseExited(MouseEvent e) {
+
+            }
+
+        }
+    }
+
+    public Position[] getInputFromTable (Player player){
+        return position;
+    }
+
+
 
     }
+
 
