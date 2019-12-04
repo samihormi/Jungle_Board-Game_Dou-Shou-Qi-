@@ -24,6 +24,7 @@ public class Table {
     private Position[] position=new Position[2];
     private boolean isFrist = false;
     private boolean isFinished = false;
+    private JLabel turnLabel;
     String imgPath = Table.class.getResource("").getPath();
     public Table(Board board,Player player1, Player player2,Player turn){
         this.gameFrame = new JFrame("Jungle Game");
@@ -33,7 +34,8 @@ public class Table {
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
         this.boardPanel = new BoardPanel(board);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-        this.gameFrame.add(new JLabel("Turn: "+ turn.getName()),BorderLayout.SOUTH);
+        turnLabel=new JLabel("Turn: "+ turn.getName());
+        this.gameFrame.add(turnLabel,BorderLayout.SOUTH);
         this.gameFrame.setVisible(true);
         this.board = board;
         this.turn = turn;
@@ -41,16 +43,20 @@ public class Table {
         p2 = player2;
     }
     public void updateTable(Board board){
-        this.board=board;
-        gameFrame.remove(boardPanel);
-        this.boardPanel = new BoardPanel(board);
-        this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-        gameFrame.revalidate();
-        gameFrame.repaint();
         if(turn.getId()==p1.getId())
             turn=p2;
         else
             turn=p1;
+        this.board=board;
+        gameFrame.remove(boardPanel);
+        gameFrame.remove(turnLabel);
+        this.boardPanel = new BoardPanel(board);
+        this.turnLabel = new JLabel("Turn: "+ turn.getName());
+        this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
+        this.gameFrame.add(turnLabel,BorderLayout.SOUTH);
+        gameFrame.revalidate();
+        gameFrame.repaint();
+
     }
 
     public JMenuBar createTableMenuBar(){
