@@ -8,6 +8,9 @@ import java.awt.event.ActionListener;
 
 import hk.edu.polyu.comp.comp2021.jungle.controller.GameController;
 
+/**
+ * Welcome window prompting users to start new game or load a saved one
+ */
 public class SBoard {
     private final JFrame SFrame;
     private JButton newGameButton;
@@ -17,7 +20,10 @@ public class SBoard {
     public boolean isNewGame = false;
     public boolean isLoadGame = false;
 
-    public SBoard(){
+    /**
+     * Initialize the window
+     */
+    public SBoard() {
         this.SFrame = new JFrame("Jungle Game");
         this.SFrame.setPreferredSize(OUTER_FRAME_DIMENSION);
         SFrame.setContentPane(panelMain);

@@ -1,6 +1,12 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
+/**
+ * Consolidates the block into a board
+ */
 public class Board implements java.io.Serializable{
+    /**
+     * Identifier for Board class
+     */
     public static final long serialVersionUID = 874508059315159026L;
     private Block[][] board = new Block[9][7];
     /**
@@ -152,32 +158,18 @@ public class Board implements java.io.Serializable{
 
     }
 
+    /**
+     *
+     * @return board
+     */
     public Block[][] getBoard() {
         return board;
     }
 
+    /**
+     *
+     * @param board initializes board
+     */
     public void setBoard(Block[][] board){
         this.board=board;
     }
-
-
-    /**
-     * print is simply used for printing either animal ranks or field types
-     * (just for testing)
-     */
-    public void print(){
-        for (int i = 0; i < 9; i++) {
-            for (int j = 0; j < 7; j++) {
-                if(board[i][j].getA() == null){
-                    System.out.print("0");
-                }
-                else{
-                    System.out.print(board[i][j].getA().getRank());
-                }
-                //System.out.print(board[i][j].getBlockType());
-                System.out.print(" ");
-            }
-            System.out.println("");
-        }
-    }
-}

@@ -5,13 +5,31 @@ import hk.edu.polyu.comp.comp2021.jungle.model.Board;
 import hk.edu.polyu.comp.comp2021.jungle.model.Player;
 import hk.edu.polyu.comp.comp2021.jungle.model.Position;
 
+import java.util.Objects;
+
+/**
+ * Establishes the valid moves and rules of the game
+ */
 public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
     private Block[][] blocks;
+
+    /**
+     *
+     * @param board initializes board
+     */
     public BoardController(Board board){
         blocks = board.getBoard();
     }
+
+    /**
+     *
+     * @param p1 initial position of element
+     * @param p2 final position of element
+     * @return
+     */
     public int moveRules(Position p1, Position p2){ //move:1, invalid move:0
         //isvalidmove() but there is exception
+        final int sixteen = 16;
         if (Math.pow(p1.getX() - p2.getX(), 2) + Math.pow(p1.getY() - p2.getY(), 2) == 1) //check distance = 1 -> exception when tiger cross the river
         {
             if (blocks[p2.getY()][p2.getX()].getBlockType() != 1) {//not river
@@ -44,7 +62,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                         return 1;
                     }
             }
-        } else if (((p1.getX() - p2.getX()) == 0 && (Math.pow(p1.getY() - p2.getY(), 2)) == 16)) {
+        } else if (((p1.getX() - p2.getX()) == 0 && (Math.pow(p1.getY() - p2.getY(), 2)) == sixteen)) {
             if (blocks[p1.getY()][p1.getX()].getA().getRank() == 6 || blocks[p1.getY()][p1.getX()].getA().getRank() == 7) { //if tiger or lion
                 if (blocks[p2.getY()][p2.getX()].getA() != null) {
                     if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
@@ -75,7 +93,6 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
-
         return 0;
     }
     private boolean checkThereIsRat(Position p,Position d,String x){
@@ -127,6 +144,10 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
         blocks[p1.getY()][p1.getX()].setA(null);
     }
 
+    /**
+     *
+     * @return checks if there is a winner to end the game
+     */
     public boolean isEnd(){
         Player p=null;
         if(blocks[0][3].getA()!=null) {
@@ -150,7 +171,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
-        System.out.println(p.getName()+"win");
+        System.out.println(Objects.requireNonNull(p).getName()+"win");
         return true;
     }
 

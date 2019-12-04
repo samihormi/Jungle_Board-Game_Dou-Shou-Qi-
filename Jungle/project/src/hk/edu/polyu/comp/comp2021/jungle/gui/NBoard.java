@@ -5,6 +5,9 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
+/**
+ * Window prompting players for their names
+ */
 public class NBoard {
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(400, 200);
     private final JFrame NFrame;
@@ -16,6 +19,9 @@ public class NBoard {
     private String Name2 = "";
     public boolean isGameStarted = false;
 
+    /**
+     * Initializes the window
+     */
     public NBoard(){
         this.NFrame = new JFrame("Jungle Game");
         NFrame.setContentPane(panelMain);
@@ -38,10 +44,18 @@ public class NBoard {
         });
     }
 
+    /**
+     *
+     * @return first player's name
+     */
     public String getName1() {
         return Name1;
     }
 
+    /**
+     *
+     * @return second player's name
+     */
     public String getName2() {
         return Name2;
     }
