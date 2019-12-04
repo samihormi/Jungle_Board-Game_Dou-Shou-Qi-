@@ -11,12 +11,6 @@ public class Block implements java.io.Serializable{
         this.player = null;
     }
 
-    public Block(Animal a, int blockType){
-        this.a = a;
-        this.blockType= blockType;
-        this.player=null;
-    }
-
     public Animal getA() {
         return a;
     }
