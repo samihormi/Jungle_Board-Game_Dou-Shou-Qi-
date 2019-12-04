@@ -2,6 +2,7 @@ package hk.edu.polyu.comp.comp2021.jungle.controller;
 
 import hk.edu.polyu.comp.comp2021.jungle.Save.ResourceManager;
 import hk.edu.polyu.comp.comp2021.jungle.Save.SaveGame;
+import hk.edu.polyu.comp.comp2021.jungle.gui.Table;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 public class GameController {
@@ -49,7 +50,8 @@ public class GameController {
         }
     }
 
-    public void loadGame(SaveGame s1)  {
+    public Table loadGame(SaveGame s1)  {
+        Table loadedGame;
         try {
             board.setBoard(s1.board.getBoard());
             player1.setId(s1.p1.getId());
@@ -61,6 +63,8 @@ public class GameController {
         } catch (Exception e) {
             System.out.println("Couldn't load game: " + e.getMessage());
         }
+        loadedGame = new Table(board,player1,player2,turn);
+        return loadedGame;
     }
 
     public Player chageTurn(Player p1,Player p2,Player turn){

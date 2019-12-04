@@ -1,6 +1,7 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
 public class Board implements java.io.Serializable{
+    public static final long serialVersionUID = 874508059315159026L;
     private Block[][] board = new Block[9][7];
     /**
      * Calling Board constructor initializes a board

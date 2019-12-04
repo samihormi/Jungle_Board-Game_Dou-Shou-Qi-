@@ -19,9 +19,10 @@ public class Application {
         }
         if(sBoard.isLoadGame){
             GameController gc = new GameController(player1.getName(),player2.getName());
+            Table table;
             try {
                 SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
-                gc.loadGame(s1);
+                table = gc.loadGame(s1);
             } catch (Exception e) {
                 e.printStackTrace();
             }
