@@ -4,7 +4,7 @@ public class Position {
     private int x;
     private int y;
 
-    public Position(int x, int y){
+    public Position(int y, int x){
         setX(x);
         setY(y);
     }
