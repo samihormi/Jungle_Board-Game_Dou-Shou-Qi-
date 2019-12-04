@@ -75,7 +75,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
-
+        System.out.println("invalid move");
         return 0;
     }
     private boolean checkThereIsRat(Position p,Position d,String x){
@@ -154,4 +154,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
         return true;
     }
 
+    public Block[][] getBlocks() {
+        return blocks;
+    }
 }

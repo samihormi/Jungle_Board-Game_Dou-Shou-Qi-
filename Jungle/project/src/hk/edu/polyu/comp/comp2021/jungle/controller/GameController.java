@@ -17,12 +17,6 @@ public class GameController {
         }catch (InterruptedException e){}
 
     }
-    public GameController(Player player1,Player player2, Board board, Player turn){
-        this.board = board;
-        this.player1 = player1;
-        this.player2 = player2;
-        this.turn = turn;
-    }
     public GameController(Board board,Player player1,Player player2, Player turn) {
         this.board = board;
         this.player1 = player1;
@@ -40,22 +34,28 @@ public class GameController {
         BoardController boardController = new BoardController(board);
         Table table = new Table(board,player1,player2,player1);
         Position p[]=null;
-        /*
-        while(boardController.isEnd()){
-            while (!table.ready) {
+
+        while(!boardController.isEnd()){
+            while (!table.isFinished()) {
                 p=table.getInputFromTable(turn); // p[0] = current location p[1]=destination
                 Thread.sleep(200);
             }
-            if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
-            {
+            System.out.println("p[o].x:"+p[0].getX()+" y:"+p[0].getY()+" p[1].x:"+p[1].getX()+" p[1].y:"+p[1].getY());
+            //if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
+            //{
+                Block[][] nw = board.getBoard();
+                nw[p[1].getX()][p[1].getY()].setA(board.getBoard()[p[0].getX()][p[0].getY()].getA());
+                nw[p[0].getX()][p[0].getY()].setA(null);
+                board.setBoard(nw);
                 turn = chageTurn(player1, player2,turn);
                 table.updateTable(board);
-            }
-            table.setReady(false);
+            //}
+            table.setFinished(false);
         }
-        */
+        System.out.println("isend end");
 
     }
+
     public void saveGame(SaveGame s1){
         try {
             ResourceManager.save(s1,"Game69.save");

@@ -9,7 +9,7 @@ import hk.edu.polyu.comp.comp2021.jungle.model.*;
 import hk.edu.polyu.comp.comp2021.jungle.gui.*;
 
 public class Application {
-    public static void main(String[] args) throws NullPointerException, InterruptedException{
+        public static void main(String[] args) throws NullPointerException, InterruptedException{
         Scanner input = new Scanner(System.in);
         Player player1 = new Player("", 1),
                 player2 = new Player("", 2);
@@ -24,12 +24,11 @@ public class Application {
             }
             player1.setName(nBoard.getName1());
             player2.setName(nBoard.getName2());
-            Board board = new Board(player1,player2);
             GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
         }
         else{
             Board board = new Board(player1,player2);
-            GameController gc = new GameController(player1,player2,board,player1);
+            GameController gc = new GameController(board,player1,player2,player1); // wrong
             Table table;
             try {
                 SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
