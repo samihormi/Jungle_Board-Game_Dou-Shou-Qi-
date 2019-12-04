@@ -38,8 +38,10 @@ public class Application {
         }
         Board board = new Board(player1,player2);
         // start playing the game
-        Table table = new Table(board);
+        Table table = new Table(board,player1,player2,player1);
+        Block[][] blocks = board.getBoard();
         GameController gc = new GameController(player1.getName(),player2.getName());
-        BoardController bc = new BoardController(board);
+        //BoardController bc = new BoardController(board);
+
     }
 }

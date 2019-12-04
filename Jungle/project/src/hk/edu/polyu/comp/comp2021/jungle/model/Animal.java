@@ -4,13 +4,13 @@ public class Animal {
     private int rank;
     private Position P;
     private Player ply;
-    private boolean isAlive;
 
-    public Animal(int rank, Position P, Player ply){
+
+    public Animal(int rank, Position P, Player ply) {
         setRank(rank);
         setP(P);
         setPly(ply);
-        isAlive = true;
+
     }
 
     public int getRank() {
@@ -35,13 +35,5 @@ public class Animal {
 
     public void setPly(Player ply) {
         this.ply = ply;
-    }
-
-    public boolean getIsAlive() {
-        return isAlive;
-    }
-
-    public void changeIsAlive() {
-        this.isAlive = !this.isAlive;
     }
 }
