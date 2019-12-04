@@ -1,7 +1,10 @@
 package hk.edu.polyu.comp.comp2021.jungle.gui;
 
+
+import hk.edu.polyu.comp.comp2021.jungle.controller.GameController;
 import hk.edu.polyu.comp.comp2021.jungle.model.Block;
 import hk.edu.polyu.comp.comp2021.jungle.model.Board;
+import hk.edu.polyu.comp.comp2021.jungle.model.Player;
 
 import javax.swing.*;
 import java.awt.*;
@@ -18,8 +21,10 @@ public class Table {
     private static final Dimension TILE_PANEL_DIMENSION = new Dimension(10, 10);
     private Color plainTileColor = Color.decode("#FFFACD");
     private Color riverTileColor = Color.decode("#0080FF");
+    private Board board;
+    private Player p1,p2,turn;
 
-    public Table(Board board){
+    public Table(Board board,Player player1, Player player2,Player turn){
         this.gameFrame = new JFrame("Jungle Game");
         this.gameFrame.setLayout(new BorderLayout());
         final JMenuBar tableMenuBar = createTableMenuBar();
@@ -28,6 +33,11 @@ public class Table {
         this.boardPanel = new BoardPanel(board);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
         this.gameFrame.setVisible(true);
+        this.board = board;
+        this.turn = turn;
+        p1 = player1;
+        p2 = player2;
+
     }
 
     public JMenuBar createTableMenuBar(){
@@ -39,14 +49,14 @@ public class Table {
     private JMenu createFileMenu(){
         final JMenu fileMenu = new JMenu("File");
 
-        final JMenuItem openPGN = new JMenuItem("Load PGN File");
-        openPGN.addActionListener(new java.awt.event.ActionListener() {
+        final JMenuItem saveG = new JMenuItem("Save Game File");
+        saveG.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                System.out.println("The file will open...");
+                GameController savedGame = new GameController(board,p1,p2,turn);
             }
         });
-        fileMenu.add(openPGN);
+        fileMenu.add(saveG);
         return fileMenu;
     }
 

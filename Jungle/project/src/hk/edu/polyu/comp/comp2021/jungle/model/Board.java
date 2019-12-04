@@ -6,19 +6,15 @@ public class Board {
      * Calling Board constructor initializes a board
      * Board initialization can be moved if necessary(for using animal objects)
      *
-     * @param pl1 playerName1
-     * @param pl2 playerName2
      * @return Nothing
      */
-    public Board(String pl1, String pl2){
+    public Board(Player player1,Player player2){
         Block[][] blocks = new Block[9][7];
         for (int i = 0; i < 9; i++) {
             for (int j = 0; j < 7; j++) {
                 blocks[i][j] = new Block();
             }
         }
-        Player player1 = new Player(pl1, 1);
-        Player player2 = new Player(pl2, 2);
         Position p;
         Animal rat1, rat2, cat1, cat2, wolf1, wolf2, dog1, dog2,
                 panther1, panther2, tiger1, tiger2, lion1, lion2,
@@ -147,10 +143,12 @@ public class Board {
         blocks[8][4].setBlockType(2);
 
         blocks[0][3].setBlockType(3);
+        blocks[0][3].setPlayer(player2); //set player on goal block
         blocks[8][3].setBlockType(3);
+        blocks[8][3].setPlayer(player1);
 
         setBoard(blocks);
-        //print();
+
     }
 
     public Block[][] getBoard() {
@@ -160,6 +158,7 @@ public class Board {
     public void setBoard(Block[][] board){
         this.board=board;
     }
+
 
     /**
      * print is simply used for printing either animal ranks or field types
