@@ -16,6 +16,13 @@ public class GameController {
             StartGame(player1_name,player2_name);
         }catch (InterruptedException e){}
 
+    public GameController(Player player1,Player player2, Board board, Player turn){
+        this.board = board;
+        this.player1 = player1;
+        this.player2 = player2;
+        this.turn = turn;
+    }
+        
     }
     public GameController(Board board,Player player1,Player player2, Player turn) {
         this.board = board;
