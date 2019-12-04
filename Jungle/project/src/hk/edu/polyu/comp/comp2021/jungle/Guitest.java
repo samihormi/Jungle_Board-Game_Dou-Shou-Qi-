@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.jungle;
 
+import hk.edu.polyu.comp.comp2021.jungle.gui.Table;
+
 import javax.swing.*;
 import java.awt.*;
 
@@ -8,7 +10,7 @@ public class Guitest {
         JFrame frame = new JFrame("test");
         JPanel panel = new JPanel();
         JLabel label = new JLabel();
-        String imgPath = Guitest.class.getResource("").getPath() + "/sources/animals/PLAYER2/Elephant2.png";
+        String imgPath = Table.class.getResource("").getPath() + "/sources/animals/PLAYER2/Elephant2.png";
         ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath).getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
         label.setIcon(imageIcon);
         panel.add(label);
