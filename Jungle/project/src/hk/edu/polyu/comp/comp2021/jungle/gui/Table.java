@@ -6,8 +6,6 @@ import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 import javax.swing.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.*;
 import java.util.List;
 
@@ -108,7 +106,7 @@ public class Table {
                 case 2:{
                     setBackground(white);
                     JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/trap.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/trap.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
                     add(label);
                     break;
@@ -116,7 +114,7 @@ public class Table {
                 case 3:{
                     setBackground(white);
                     JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/den.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/den.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
                     add(label);
                     break;
@@ -135,12 +133,12 @@ public class Table {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
 
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Rat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Rat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Rat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Rat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -149,12 +147,12 @@ public class Table {
                 case 2: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Cat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Cat.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Cat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Cat2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -163,12 +161,12 @@ public class Table {
                 case 3: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Dog.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Dog.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Dog2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Dog2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -178,12 +176,12 @@ public class Table {
                 case 4: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Wolf.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Wolf.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Wolf2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Wolf2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -194,12 +192,12 @@ public class Table {
                 case 5: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Leopard.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Leopard.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Leopard2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Leopard2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -209,12 +207,12 @@ public class Table {
                 case 6: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Tiger.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Tiger.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Tiger2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Tiger2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -224,12 +222,12 @@ public class Table {
                 case 7: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Lion.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Lion.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Lion2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Lion2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
@@ -238,12 +236,12 @@ public class Table {
                 case 8: {
                     if (blocks[tileX][tileY].getA().getPly().getId()==1) {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER1/Elephant.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER1/Elephant.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     } else {
                         JLabel label = new JLabel();
-                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("sources/animals/PLAYER2/Elephant2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                        ImageIcon imageIcon = new ImageIcon(new ImageIcon("hk/edu/polyu/comp/comp2021/jungle/sources/animals/PLAYER2/Elephant2.png").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
                         label.setIcon(imageIcon);
                         add(label);
                     }
