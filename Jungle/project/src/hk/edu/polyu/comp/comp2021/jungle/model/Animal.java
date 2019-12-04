@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
-public class Animal {
+public class Animal implements java.io.Serializable {
     private int rank;
     private Position P;
     private Player ply;

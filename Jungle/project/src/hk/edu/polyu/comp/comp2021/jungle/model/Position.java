@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
-public class Position {
+public class Position implements java.io.Serializable{
     private int x;
     private int y;
 

@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
-public class Board {
+public class Board implements java.io.Serializable{
     private Block[][] board = new Block[9][7];
     /**
      * Calling Board constructor initializes a board
