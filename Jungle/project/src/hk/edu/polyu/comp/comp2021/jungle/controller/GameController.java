@@ -5,6 +5,8 @@ import hk.edu.polyu.comp.comp2021.jungle.Save.SaveGame;
 import hk.edu.polyu.comp.comp2021.jungle.gui.Table;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
+import javax.swing.*;
+
 public class GameController {
     public Player player1;
     public Player player2;
