@@ -87,7 +87,7 @@ public class GameController {
             if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             {
                 board.setBoard(boardController.getBlocks());
-                turn = chageTurn(player1, player2,turn);
+                turn = changeTurn(player1, player2,turn);
                 table.updateTable(board);
             }
             table.setFinished(false);
@@ -102,7 +102,8 @@ public class GameController {
      */
     public void saveGame(SaveGame s1){
         try {
-            ResourceManager.save(s1,"Game69.save");
+            String fname = JOptionPane.showInputDialog("enter file name")+".save";
+            ResourceManager.save(s1,fname);
         } catch (Exception e) {
             System.out.println("Couldn't save: " + e.getMessage());
         }
@@ -114,14 +115,13 @@ public class GameController {
      */
     public Table loadGame(SaveGame s1)  {
         Table loadedGame;
-        BoardController boardController = new BoardController(board);
         try {
             board.setBoard(s1.board.getBoard());
             player1.setId(s1.p1.getId());
             player1.setName(s1.p1.getName());
             player2.setId(s1.p2.getId());
             player2.setName(s1.p2.getName());
-            changeTurn(player1, player2, changeTurn(s1.p1, s1.p2, s1.turn));
+            turn=s1.turn;
 
         } catch (Exception e) {
             System.out.println("Couldn't load game: " + e.getMessage());

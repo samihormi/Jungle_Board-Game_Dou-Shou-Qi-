@@ -40,7 +40,6 @@ public class Application {
         }
         else{
             Board board = new Board(player1,player2);
-            //GameController gc = new GameController(board,player1,player2,player1); // wrong
             GameController gc = new GameController(player1,player2,board,player1);
             Table table = null;
             try {

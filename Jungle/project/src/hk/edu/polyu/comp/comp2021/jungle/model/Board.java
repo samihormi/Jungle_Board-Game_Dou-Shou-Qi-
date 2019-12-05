@@ -173,3 +173,4 @@ public class Board implements java.io.Serializable{
     public void setBoard(Block[][] board){
         this.board=board;
     }
+    }
