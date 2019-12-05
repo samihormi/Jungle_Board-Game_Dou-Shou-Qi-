@@ -415,24 +415,28 @@ public class TableView {
     }
     /**
      * Checks for the starting position
+     * @return isFirst bool
      */
     public boolean isFrist() {
         return isFrist;
     }
     /**
      * Sets starting position
+     * @param frist to be set
      */
     public void setFrist(boolean frist) {
         isFrist = frist;
     }
     /**
      * Checks for destination
+     * @return isFinished bool
      */
     public boolean isFinished() {
         return isFinished;
     }
     /**
      * Sets destination position
+     * @param finished bool
      */
     public void setFinished(boolean finished) {
         isFinished = finished;
