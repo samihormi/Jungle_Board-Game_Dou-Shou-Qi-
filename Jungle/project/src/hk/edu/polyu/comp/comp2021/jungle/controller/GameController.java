@@ -9,7 +9,7 @@ import javax.swing.*;
  * Displays the game screen
  */
 public class GameController {
-    private int pause = 200;
+    private final static int PAUSE = 200;
     private Player player1;
     private Player player2;
     private Player turn;
@@ -70,7 +70,7 @@ public class GameController {
         while(!boardController.isEnd()){
             while (!tableView.isFinished()) {
                 p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
-                Thread.sleep(pause);
+                Thread.sleep(PAUSE);
             }
             if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             {
