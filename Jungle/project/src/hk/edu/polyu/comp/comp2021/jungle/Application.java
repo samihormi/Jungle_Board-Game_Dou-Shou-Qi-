@@ -36,7 +36,7 @@ public class Application {
                 gameStarted=true;
                 loadComplete=true;
                 NameVIew nameVIew = new NameVIew();
-                while (!nameVIew.isGameStarted) {
+                while (!nameVIew.isGameStarted()) {
                     Thread.sleep(time);
                 }
                 player1.setName(nameVIew.getName1());
@@ -51,8 +51,8 @@ public class Application {
                     if(s1!=null) {
                         loadComplete=true;
                         tableView = s1.loadGame();
-                        board = new Board(s1.p1, s1.p2);
-                        gc = new GameController(s1.p1, s1.p2, s1.board, s1.turn);
+                        board = new Board(s1.getP1(), s1.getP2());
+                        gc = new GameController(s1.getP1(), s1.getP2(), s1.getBoard(), s1.getTurn());
                         gc.StartGame(tableView);
                     }
                    else{
