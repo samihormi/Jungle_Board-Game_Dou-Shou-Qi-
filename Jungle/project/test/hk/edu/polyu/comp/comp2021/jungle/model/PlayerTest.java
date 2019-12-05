@@ -3,7 +3,13 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+     * Player Class Test
+     */
 public class PlayerTest {
+    /**
+     * Methods Test
+     */
     @Test
     public void playerTest() throws Exception{
         Player actual = new Player("Jon", 1);
