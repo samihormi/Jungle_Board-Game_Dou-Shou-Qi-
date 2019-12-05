@@ -39,6 +39,7 @@ public class SaveGameController implements java.io.Serializable {
             ResourceManager.save(this,fname+".save");
 
         } catch (Exception e) {
+            JOptionPane.showMessageDialog(null,"save Error");
         }
     }
 
