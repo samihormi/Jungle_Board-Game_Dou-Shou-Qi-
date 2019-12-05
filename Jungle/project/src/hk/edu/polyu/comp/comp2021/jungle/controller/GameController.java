@@ -85,7 +85,7 @@ public class GameController {
             tableView.setFinished(false);
         }
         turn=changeTurn(player1, player2,turn);
-        JOptionPane.showMessageDialog(null,"Victory! " + turn.getName() + " won! Congratulations!");
+        JOptionPane.showMessageDialog(null,"Victory!\n " + turn.getName() + " won! \nCongratulations!");
     }
 
     /**
