@@ -11,7 +11,7 @@ public class PositionTest {
      * Full Test
      */ 
     @Test
-    public void positionTest() throws Exception{
+    public void positionTest(){
         Position actual = new Position(5, 1);
         actual.setY(4);
         actual.setX(3);
