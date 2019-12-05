@@ -34,7 +34,7 @@ public class TableView {
     private final int width = 80;
     private final int height = 60;
     private JLabel turnLabel;
-    String imgPath = TableView.class.getResource("").getPath();
+    private String imgPath = TableView.class.getResource("").getPath();
 
     /**
      *
@@ -112,7 +112,7 @@ public class TableView {
      *  Generates the Board Panel
      */
     private class BoardPanel extends JPanel{
-        final List<TilePanel> boardTiles;
+        protected final List<TilePanel> boardTiles;
 
         BoardPanel(Board board){
             super(new GridLayout(9,7));
