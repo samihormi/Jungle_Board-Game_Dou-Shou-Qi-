@@ -3,6 +3,7 @@ package hk.edu.polyu.comp.comp2021.jungle.View;
 
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
+import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
 
 import javax.swing.*;
 import java.awt.*;
@@ -100,7 +101,8 @@ public class TableView {
         saveG.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                SaveGameController s = new SaveGameController(board,p1,p2,turn);
+                SaveGameController s = new SaveGameController();
+                s.SaveGame(board,p1,p2,turn);
             }
         });
         fileMenu.add(saveG);
