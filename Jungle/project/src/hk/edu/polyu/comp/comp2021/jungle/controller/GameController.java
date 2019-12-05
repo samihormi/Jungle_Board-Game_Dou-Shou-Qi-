@@ -24,6 +24,7 @@ public class GameController {
         try {
             prepareStartGame(player1_name, player2_name);
         } catch (InterruptedException e) {
+            System.out.println("Error!");
         }
     }
 
