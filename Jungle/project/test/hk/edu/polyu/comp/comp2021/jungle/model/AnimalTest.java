@@ -11,7 +11,7 @@ public class AnimalTest {
      * Animal Test
      */
     @Test
-    public void animalTest() throws Exception{
+    public void animalTest(){
         Position p = new Position(1,2);
         Player ply = new Player("Mark", 1);
         Animal actual = new Animal(2, p, ply);
