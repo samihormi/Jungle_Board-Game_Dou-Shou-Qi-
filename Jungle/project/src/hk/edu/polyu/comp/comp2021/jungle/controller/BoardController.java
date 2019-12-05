@@ -26,7 +26,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
      *
      * @param p1 initial position of element
      * @param p2 final position of element
-     * @return
+     * @return validity of a move
      */
     public int moveRules(Position p1, Position p2){ //move:1, invalid move:0
         //isvalidmove() but there is exception
@@ -211,6 +211,10 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
         return true;
     }
 
+    /**
+     * 
+     * @return blocks 
+     */
     public Block[][] getBlocks() {
         return blocks;
     }
