@@ -1,6 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.controller;
 
-import hk.edu.polyu.comp.comp2021.jungle.View.TableView;
+import hk.edu.polyu.comp.comp2021.jungle.view.TableView;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 import javax.swing.*;
@@ -66,7 +66,7 @@ public class GameController {
     */
     public void StartGame(TableView tableView) throws InterruptedException{
         BoardController boardController = new BoardController(board);
-        Position p[]=null;
+        Position[] p =null;
         while(!boardController.isEnd()){
             while (!tableView.isFinished()) {
                 p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination

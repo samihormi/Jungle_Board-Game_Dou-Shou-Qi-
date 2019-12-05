@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="hk.edu.polyu.comp.comp2021.jungle.View.StartView">
+<form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="hk.edu.polyu.comp.comp2021.jungle.view.StartView">
   <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
@@ -54,7 +54,7 @@
           <background color="-13883855"/>
           <font size="20" style="1"/>
           <foreground color="-16777216"/>
-          <icon value="hk/edu/polyu/comp/comp2021/jungle/View/sources/Welcome.png"/>
+          <icon value="hk/edu/polyu/comp/comp2021/jungle/view/sources/Welcome.png"/>
           <text value=""/>
         </properties>
       </component>

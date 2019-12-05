@@ -6,7 +6,7 @@ import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
 import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
 import hk.edu.polyu.comp.comp2021.jungle.controller.*;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
-import hk.edu.polyu.comp.comp2021.jungle.View.*;
+import hk.edu.polyu.comp.comp2021.jungle.view.*;
 
 /**
  * Launches the application of the game.

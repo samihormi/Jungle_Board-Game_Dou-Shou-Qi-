@@ -1,5 +1,7 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
+import org.jetbrains.annotations.Nullable;
+
 /**
  * Creates the blocks making up the game board
  * Assigns a type to each block
@@ -7,8 +9,10 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
  */
 public class Block implements java.io.Serializable{
 
+    @Nullable
     private Animal a;
     private int blockType;//0=plain, 1=river, 2=trap, 3=goal(we have to consider the team)
+    @Nullable
     private Player player; //to determine which player's goal
 
     /**

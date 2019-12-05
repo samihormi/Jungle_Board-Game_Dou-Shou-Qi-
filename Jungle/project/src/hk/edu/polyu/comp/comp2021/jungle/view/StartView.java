@@ -1,13 +1,9 @@
-package hk.edu.polyu.comp.comp2021.jungle.View;
+package hk.edu.polyu.comp.comp2021.jungle.view;
 
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.FileInputStream;
-import java.io.FileNotFoundException;
-import java.io.InputStream;
 
 
 /**

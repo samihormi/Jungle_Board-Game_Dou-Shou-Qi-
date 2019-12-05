@@ -1,13 +1,10 @@
-package hk.edu.polyu.comp.comp2021.jungle.View;
+package hk.edu.polyu.comp.comp2021.jungle.view;
 
 
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
-import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
 
 import javax.swing.*;
-import javax.swing.border.Border;
-import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;

@@ -35,7 +35,7 @@ public class ResourceManager {
         int status=jfc.showOpenDialog(null);
         if(status==JFileChooser.APPROVE_OPTION){
             String str = jfc.getSelectedFile().getName();
-            if(str.substring(str.length()-5,str.length()).equals(".save")) {
+            if(str.substring(str.length()-5).equals(".save")) {
                 try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(jfc.getSelectedFile().getName())))) {
                     return ois.readObject();
                 }
