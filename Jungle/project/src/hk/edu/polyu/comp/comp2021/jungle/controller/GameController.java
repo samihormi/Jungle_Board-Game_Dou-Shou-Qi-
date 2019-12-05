@@ -1,8 +1,6 @@
 package hk.edu.polyu.comp.comp2021.jungle.controller;
 
-import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
-import hk.edu.polyu.comp.comp2021.jungle.save.SaveGame;
-import hk.edu.polyu.comp.comp2021.jungle.gui.Table;
+import hk.edu.polyu.comp.comp2021.jungle.View.TableView;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 /**
@@ -29,8 +27,6 @@ public class GameController {
         }
     }
 
-
-
     /**
      *
      * @param player1 first player
@@ -44,43 +40,24 @@ public class GameController {
         this.player2 = player2;
         this.turn = turn;
     }
-    /**
-     *
-     * @param player1 first player
-     * @param player2 second player
-     * @param board game board
-     * @param turn player's turn
-     */
-    public GameController(Board board,Player player1,Player player2, Player turn) {
-        this.board = board;
-        this.player1 = player1;
-        this.player2 = player2;
-        this.turn = turn;
-        SaveGame s1 = new SaveGame(board,player1,player2,turn);
-        saveGame(s1);
-    }
 
     public void prepareStartGame(String player1_name,String player2_name) throws InterruptedException{
         player1 = new Player(player1_name, 1);
         player2 = new Player(player2_name, 2);
         turn = player1;
         board = new Board(player1,player2);
-        Table table = new Table(board,player1,player2,player1);
-        StartGame(table);
+        TableView tableView = new TableView(board,player1,player2,player1);
+        StartGame(tableView);
     }
 
 
-    public void StartGame(Table table) throws InterruptedException{
-
-
+    public void StartGame(TableView tableView) throws InterruptedException{
         BoardController boardController = new BoardController(board);
-
         Position p[]=null;
-
         while(!boardController.isEnd()){
             System.out.println("turn:"+turn.getId());
-            while (!table.isFinished()) {
-                p=table.getInputFromTable(turn); // p[0] = current location p[1]=destination
+            while (!tableView.isFinished()) {
+                p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
                 Thread.sleep(200);
             }
             System.out.println("p[o]xy:("+p[0].getX()+","+p[0].getY()+") p[1]xy("+p[1].getX()+","+p[1].getY()+")");
@@ -88,46 +65,13 @@ public class GameController {
             {
                 board.setBoard(boardController.getBlocks());
                 turn = changeTurn(player1, player2,turn);
-                table.updateTable(board);
+                tableView.updateTable(board);
             }
-            table.setFinished(false);
+            tableView.setFinished(false);
         }
         System.out.println("isend end");
+        turn=changeTurn(player1, player2,turn);
         JOptionPane.showMessageDialog(null,"Victory! " + turn.getName() + " won! Congratulations!");
-    }
-
-    /**
-     *
-     * @param s1 game to save
-     */
-    public void saveGame(SaveGame s1){
-        try {
-            String fname = JOptionPane.showInputDialog("enter file name")+".save";
-            ResourceManager.save(s1,fname);
-        } catch (Exception e) {
-            System.out.println("Couldn't save: " + e.getMessage());
-        }
-    }
-    /**
-     *
-     * @param s1 saved game
-     * @return table of the loaded game
-     */
-    public Table loadGame(SaveGame s1)  {
-        Table loadedGame;
-        try {
-            board.setBoard(s1.board.getBoard());
-            player1.setId(s1.p1.getId());
-            player1.setName(s1.p1.getName());
-            player2.setId(s1.p2.getId());
-            player2.setName(s1.p2.getName());
-            turn=s1.turn;
-
-        } catch (Exception e) {
-            System.out.println("Couldn't load game: " + e.getMessage());
-        }
-        loadedGame = new Table(board, player1, player2, turn);
-        return loadedGame;
     }
 
     /**

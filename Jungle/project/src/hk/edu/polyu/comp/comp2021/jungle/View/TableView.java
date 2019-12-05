@@ -1,8 +1,8 @@
-package hk.edu.polyu.comp.comp2021.jungle.gui;
+package hk.edu.polyu.comp.comp2021.jungle.View;
 
 
-import hk.edu.polyu.comp.comp2021.jungle.controller.GameController;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
+import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
 
 import javax.swing.*;
 import java.awt.*;
@@ -13,7 +13,7 @@ import java.util.List;
 /**
  * Generates window with graphics
  */
-public class Table {
+public class TableView {
     private final JFrame gameFrame;
     private BoardPanel boardPanel;
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(600, 600);
@@ -31,7 +31,7 @@ public class Table {
     private final int width = 80;
     private final int height = 60;
     private JLabel turnLabel;
-    String imgPath = Table.class.getResource("").getPath();
+    String imgPath = TableView.class.getResource("").getPath();
 
     /**
      *
@@ -40,7 +40,7 @@ public class Table {
      * @param player2 player2
      * @param turn player's turn
      */
-    public Table(Board board,Player player1, Player player2,Player turn){
+    public TableView(Board board, Player player1, Player player2, Player turn){
         this.gameFrame = new JFrame("Jungle Game");
         this.gameFrame.setLayout(new BorderLayout());
         final JMenuBar tableMenuBar = createTableMenuBar();
@@ -100,7 +100,7 @@ public class Table {
         saveG.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                GameController savedGame = new GameController(board,p1,p2,turn);
+                SaveGameController s = new SaveGameController(board,p1,p2,turn);
             }
         });
         fileMenu.add(saveG);

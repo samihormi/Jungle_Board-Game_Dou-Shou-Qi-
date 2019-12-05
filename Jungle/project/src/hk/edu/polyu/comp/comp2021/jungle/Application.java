@@ -3,10 +3,10 @@ package hk.edu.polyu.comp.comp2021.jungle;
 import java.util.*;
 
 import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
-import hk.edu.polyu.comp.comp2021.jungle.save.SaveGame;
+import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
 import hk.edu.polyu.comp.comp2021.jungle.controller.*;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
-import hk.edu.polyu.comp.comp2021.jungle.gui.*;
+import hk.edu.polyu.comp.comp2021.jungle.View.*;
 
 /**
  * Launches the application of the game.
@@ -25,30 +25,30 @@ public class Application {
         Scanner input = new Scanner(System.in);
         Player player1 = new Player("", 1),
                 player2 = new Player("", 2);
-        SBoard sBoard = new SBoard();
-        while (!sBoard.isNewGame && !sBoard.isLoadGame) {
+        StartView startView = new StartView();
+        while (!startView.isNewGame && !startView.isLoadGame) {
             Thread.sleep(time);
         }
-        if (sBoard.isNewGame) {
-            NBoard nBoard = new NBoard();
-            while (!nBoard.isGameStarted) {
+        if (startView.isNewGame) {
+            NameVIew nameVIew = new NameVIew();
+            while (!nameVIew.isGameStarted) {
                 Thread.sleep(time);
             }
-            player1.setName(nBoard.getName1());
-            player2.setName(nBoard.getName2());
+            player1.setName(nameVIew.getName1());
+            player2.setName(nameVIew.getName2());
             GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
         }
-        else{
+        else{//load game
             Board board = new Board(player1,player2);
             GameController gc = new GameController(player1,player2,board,player1);
-            Table table = null;
+            TableView tableView = null;
             try {
-                SaveGame s1 = (SaveGame) ResourceManager.load("Game69.save");
-                table = gc.loadGame(s1);
+                SaveGameController s1 = (SaveGameController) ResourceManager.load("Game69.save");
+                tableView = s1.loadGame();
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            gc.StartGame(table);
+            gc.StartGame(tableView);
         }
 
     }

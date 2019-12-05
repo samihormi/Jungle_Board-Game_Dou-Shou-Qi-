@@ -1,17 +1,14 @@
-package hk.edu.polyu.comp.comp2021.jungle.gui;
+package hk.edu.polyu.comp.comp2021.jungle.View;
 
-import javax.imageio.ImageIO;
 import javax.swing.*;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-import hk.edu.polyu.comp.comp2021.jungle.controller.GameController;
-
 /**
  * Welcome window prompting users to start new game or load a saved one
  */
-public class SBoard {
+public class StartView {
     private final JFrame SFrame;
     private JButton newGameButton;
     private JButton loadGameButton;
@@ -23,7 +20,7 @@ public class SBoard {
     /**
      * Initialize the window
      */
-    public SBoard() {
+    public StartView() {
         this.SFrame = new JFrame("Jungle Game");
         this.SFrame.setPreferredSize(OUTER_FRAME_DIMENSION);
         SFrame.setContentPane(panelMain);

@@ -1,4 +1,4 @@
-package hk.edu.polyu.comp.comp2021.jungle.gui;
+package hk.edu.polyu.comp.comp2021.jungle.View;
 
 import javax.swing.*;
 import java.awt.*;
@@ -8,7 +8,7 @@ import java.awt.event.ActionListener;
 /**
  * Window prompting players for their names
  */
-public class NBoard {
+public class NameVIew {
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(400, 200);
     private final JFrame NFrame;
     private JTextField playerName2;
@@ -22,7 +22,7 @@ public class NBoard {
     /**
      * Initializes the window
      */
-    public NBoard(){
+    public NameVIew(){
         this.NFrame = new JFrame("Jungle Game");
         NFrame.setContentPane(panelMain);
         NFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
