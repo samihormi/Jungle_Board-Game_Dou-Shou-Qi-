@@ -11,7 +11,7 @@ public class PlayerTest {
      * Methods Test
      */
     @Test
-    public void playerTest() throws Exception{
+    public void playerTest(){
         Player actual = new Player("Jon", 1);
         actual.setName("John");
         actual.setId(2);

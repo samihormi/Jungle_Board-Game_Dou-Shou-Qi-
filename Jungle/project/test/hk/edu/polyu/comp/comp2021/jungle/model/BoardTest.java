@@ -11,7 +11,7 @@ public class BoardTest {
      * Full Board Class Testing
      */
     @Test
-    public void boardTest() throws Exception{
+    public void boardTest(){
         Player player1 = new Player("John", 1);
         Player player2 = new Player("Alice", 2);
         Board board = new Board(player1,player2);
