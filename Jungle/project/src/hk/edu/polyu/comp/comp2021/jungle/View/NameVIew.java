@@ -17,7 +17,7 @@ public class NameVIew {
     private JButton startGameButton;
     private String Name1 = "";
     private String Name2 = "";
-    public boolean isGameStarted = false;
+    protected boolean isGameStarted = false;
 
     /**
      * Initializes the window
@@ -59,4 +59,13 @@ public class NameVIew {
     public String getName2() {
         return Name2;
     }
+
+    /**
+     * Checks whether the game is launched
+     * @return isGameStarted
+     */
+    public boolean isGameStarted(){
+        return isGameStarted;
+    }
 }
+
