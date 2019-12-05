@@ -29,9 +29,12 @@ public class SaveGameController implements java.io.Serializable {
         this.p1=p1;
         this.p2=p2;
         this.turn=turn;
+        String fname="";
         try {
-            String fname = JOptionPane.showInputDialog("enter file name")+".save";
-            ResourceManager.save(this,fname);
+            while (fname.length()==0){
+                fname = JOptionPane.showInputDialog("enter file name");}
+            ResourceManager.save(this,fname+".save");
+
         } catch (Exception e) {
             System.out.println("Couldn't save: " + e.getMessage());
         }
