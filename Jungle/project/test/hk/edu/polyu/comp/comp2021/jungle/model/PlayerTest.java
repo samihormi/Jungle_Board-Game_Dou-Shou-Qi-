@@ -4,18 +4,18 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
-     * Player Class Test
-     */
+ * Player Class Test
+ */
 public class PlayerTest {
     /**
      * Methods Test
      */
     @Test
-    public void playerTest(){
+    public void playerTest() {
         Player actual = new Player("Jon", 1);
         actual.setName("John");
         actual.setId(2);
-        Assert.assertEquals("John",actual.getName());
+        Assert.assertEquals("John", actual.getName());
         Assert.assertEquals(2, actual.getId());
     }
 }

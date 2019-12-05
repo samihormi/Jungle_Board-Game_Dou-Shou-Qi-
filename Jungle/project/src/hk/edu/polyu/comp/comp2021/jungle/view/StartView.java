@@ -9,7 +9,7 @@ import java.awt.event.ActionListener;
 /**
  * Welcome window prompting users to start new game or load a saved one
  */
-public class StartView{
+public class StartView {
     private final JFrame SFrame;
     private JButton newGameButton;
     private JButton loadGameButton;
@@ -19,21 +19,20 @@ public class StartView{
     private boolean isLoadGame = false;
 
     /**
-     *
      * @return user selection for new game
      */
-    public boolean isNewGame(){
+    public boolean isNewGame() {
         return isNewGame;
     }
 
 
     /**
-     *
      * @return user selection for load game
      */
-    public boolean isLoadGame(){
+    public boolean isLoadGame() {
         return isLoadGame;
     }
+
     /**
      * Initialize the window
      */

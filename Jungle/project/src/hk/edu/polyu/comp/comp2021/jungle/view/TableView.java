@@ -24,8 +24,8 @@ public class TableView {
     private Color trapColor = Color.decode("#663300");
     private Color white = Color.decode("#FFFFFF");
     private Board board;
-    private Player p1,p2,turn;
-    private Position[] position=new Position[2];
+    private Player p1, p2, turn;
+    private Position[] position = new Position[2];
     private boolean isFrist = false;
     private boolean isFinished = false;
     private final int width = 80;
@@ -34,13 +34,12 @@ public class TableView {
     private String imgPath = TableView.class.getResource("").getPath();
 
     /**
-     *
-     * @param board board
+     * @param board   board
      * @param player1 plaayer1
      * @param player2 player2
-     * @param turn player's turn
+     * @param turn    player's turn
      */
-    public TableView(Board board, Player player1, Player player2, Player turn){
+    public TableView(Board board, Player player1, Player player2, Player turn) {
         this.gameFrame = new JFrame("Jungle Game");
         this.gameFrame.setLayout(new BorderLayout());
         final JMenuBar tableMenuBar = createTableMenuBar();
@@ -48,8 +47,8 @@ public class TableView {
         this.gameFrame.setSize(OUTER_FRAME_DIMENSION);
         this.boardPanel = new BoardPanel(board);
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-        turnLabel=new JLabel("Turn: "+ turn.getName());
-        this.gameFrame.add(turnLabel,BorderLayout.SOUTH);
+        turnLabel = new JLabel("Turn: " + turn.getName());
+        this.gameFrame.add(turnLabel, BorderLayout.SOUTH);
         this.gameFrame.setVisible(true);
         this.board = board;
         this.turn = turn;
@@ -58,39 +57,36 @@ public class TableView {
     }
 
     /**
-     *
      * @param board board
-     *  Updates board according to the movement
+     *              Updates board according to the movement
      */
-    public void updateTable(Board board){
+    public void updateTable(Board board) {
         changeTurn();
-        this.board=board;
+        this.board = board;
         gameFrame.remove(boardPanel);
         gameFrame.remove(turnLabel);
         this.boardPanel = new BoardPanel(board);
-        this.turnLabel = new JLabel("Turn: "+ turn.getName());
+        this.turnLabel = new JLabel("Turn: " + turn.getName());
         this.gameFrame.add(this.boardPanel, BorderLayout.CENTER);
-        this.gameFrame.add(turnLabel,BorderLayout.SOUTH);
+        this.gameFrame.add(turnLabel, BorderLayout.SOUTH);
         gameFrame.revalidate();
         gameFrame.repaint();
 
     }
 
     /**
-     *
      * @return Menu Bar window
      */
-    public JMenuBar createTableMenuBar(){
+    public JMenuBar createTableMenuBar() {
         final JMenuBar tableMenuBar = new JMenuBar();
         tableMenuBar.add(createFileMenu());
         return tableMenuBar;
     }
 
     /**
-     *
      * @return Menu options
      */
-    private JMenu createFileMenu(){
+    private JMenu createFileMenu() {
         final JMenu fileMenu = new JMenu("File");
 
         final JMenuItem saveG = new JMenuItem("Save Game File");
@@ -98,7 +94,7 @@ public class TableView {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
                 SaveGameController s = new SaveGameController();
-                s.SaveGame(board,p1,p2,turn);
+                s.SaveGame(board, p1, p2, turn);
             }
         });
         fileMenu.add(saveG);
@@ -106,13 +102,13 @@ public class TableView {
     }
 
     /**
-     *  Generates the Board Panel
+     * Generates the Board Panel
      */
-    private class BoardPanel extends JPanel{
+    private class BoardPanel extends JPanel {
         protected final List<TilePanel> boardTiles;
 
-        BoardPanel(Board board){
-            super(new GridLayout(9,7));
+        BoardPanel(Board board) {
+            super(new GridLayout(9, 7));
             this.boardTiles = new ArrayList<>();
             for (int i = 0; i < 9; i++) {
                 for (int j = 0; j < 7; j++) {
@@ -135,7 +131,6 @@ public class TableView {
         private final int tileY;
 
 
-
         TilePanel(final BoardPanel boardPanel,
                   final int tileX, final int tileY,
                   Board board) {
@@ -149,11 +144,11 @@ public class TableView {
             this.setBorder(BorderFactory.createLineBorder(Color.black));
             validate();
         }
-        
 
 
         /**
-         *  Assigns a color to each tile based on its position
+         * Assigns a color to each tile based on its position
+         *
          * @param board board
          */
         private void assignTileColor(Board board) {
@@ -190,6 +185,7 @@ public class TableView {
 
         /**
          * Assigns an animal to each panel depending on its position
+         *
          * @param board current board
          */
         public void assignAnimal(Board board) {
@@ -343,14 +339,12 @@ public class TableView {
         }
 
         /**
-         *  Executes the movement of the mouse
+         * Executes the movement of the mouse
          */
-        class MyMouseListener implements MouseListener{
+        class MyMouseListener implements MouseListener {
 
             @Override
             public void mouseClicked(MouseEvent e) {
-
-
 
 
             }
@@ -363,20 +357,18 @@ public class TableView {
             @Override
             public void mouseReleased(MouseEvent e) {
                 //JPanel panel = (JPanel)e.getSource();
-                if(!isFrist) {
-                    if(board.getBoard()[tileY][tileX].getA()!=null&&board.getBoard()[tileY][tileX].getA().getPly().getId()==turn.getId()){
+                if (!isFrist) {
+                    if (board.getBoard()[tileY][tileX].getA() != null && board.getBoard()[tileY][tileX].getA().getPly().getId() == turn.getId()) {
                         position[0] = new Position(tileY, tileX);
-                        isFrist=true;
-                        JLabel j = (JLabel)e.getSource();
+                        isFrist = true;
+                        JLabel j = (JLabel) e.getSource();
                         j.setBorder(BorderFactory.createLineBorder(Color.RED));
-                    }
-                    else
-                        JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
-                }
-                else{
-                    position[1] = new Position(tileY,tileX);
-                    isFinished=true;
-                    isFrist=false;
+                    } else
+                        JOptionPane.showMessageDialog(null, "invalid move", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
+                } else {
+                    position[1] = new Position(tileY, tileX);
+                    isFinished = true;
+                    isFrist = false;
                 }
             }
 
@@ -397,42 +389,50 @@ public class TableView {
      * Changes current player
      */
     public void changeTurn() {
-        if(turn.getId()==p1.getId())
-            turn=p2;
+        if (turn.getId() == p1.getId())
+            turn = p2;
         else
-            turn=p1;
+            turn = p1;
     }
+
     /**
-     *
      * @param player player
      * @return position
      */
-    public Position[] getInputFromTable (Player player){
+    public Position[] getInputFromTable(Player player) {
         return position;
     }
+
     /**
      * Checks for the starting position
+     *
      * @return isFirst bool
      */
     public boolean isFrist() {
         return isFrist;
     }
+
     /**
      * Sets starting position
+     *
      * @param frist to be set
      */
     public void setFrist(boolean frist) {
         isFrist = frist;
     }
+
     /**
      * Checks for destination
+     *
      * @return isFinished bool
      */
     public boolean isFinished() {
         return isFinished;
     }
+
     /**
      * Sets destination position
+     *
      * @param finished bool
      */
     public void setFinished(boolean finished) {

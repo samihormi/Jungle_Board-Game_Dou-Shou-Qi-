@@ -3,22 +3,20 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
 /**
  * Initializes the Player value
  */
-public class Player implements java.io.Serializable{
+public class Player implements java.io.Serializable {
     private String name;
     private int id;
 
     /**
-     *
      * @param name player's name
-     * @param id [layer's id
+     * @param id   [layer's id
      */
-    public Player(String name, int id){
+    public Player(String name, int id) {
         this.name = name;
         this.id = id;
     }
 
     /**
-     *
      * @return player's name
      */
     public String getName() {
@@ -26,7 +24,6 @@ public class Player implements java.io.Serializable{
     }
 
     /**
-     *
      * @param name initializes player's name
      */
     public void setName(String name) {
@@ -34,7 +31,6 @@ public class Player implements java.io.Serializable{
     }
 
     /**
-     *
      * @return player's id
      */
     public int getId() {
@@ -42,7 +38,6 @@ public class Player implements java.io.Serializable{
     }
 
     /**
-     *
      * @param id initializes player's id
      */
     public void setId(int id) {

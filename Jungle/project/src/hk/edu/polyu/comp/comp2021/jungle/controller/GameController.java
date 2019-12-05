@@ -4,6 +4,7 @@ import hk.edu.polyu.comp.comp2021.jungle.view.TableView;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
 import javax.swing.*;
+
 /**
  * Starts the game
  * Displays the game screen
@@ -16,7 +17,6 @@ public class GameController {
     private Board board;
 
     /**
-     *
      * @param player1_name returns the name of the first player
      * @param player2_name returns the name of the second player
      */
@@ -29,11 +29,10 @@ public class GameController {
     }
 
     /**
-     *
      * @param player1 first player
      * @param player2 second player
-     * @param board game board
-     * @param turn player's turn
+     * @param board   game board
+     * @param turn    player's turn
      */
     public GameController(Player player1, Player player2, Board board, Player turn) {
         this.board = board;
@@ -43,55 +42,55 @@ public class GameController {
     }
 
     /**
-    * Responsible for preparing variable
-    * Starts the Game
-    * @param player1_name Name1
-    * @param player2_name Name2
-    * @throws InterruptedException for interruption 
-    */
-    public void prepareStartGame(String player1_name,String player2_name) throws InterruptedException{
+     * Responsible for preparing variable
+     * Starts the Game
+     *
+     * @param player1_name Name1
+     * @param player2_name Name2
+     * @throws InterruptedException for interruption
+     */
+    public void prepareStartGame(String player1_name, String player2_name) throws InterruptedException {
         player1 = new Player(player1_name, 1);
         player2 = new Player(player2_name, 2);
         turn = player1;
-        board = new Board(player1,player2);
-        TableView tableView = new TableView(board,player1,player2,player1);
+        board = new Board(player1, player2);
+        TableView tableView = new TableView(board, player1, player2, player1);
         StartGame(tableView);
     }
 
     /**
-    * The actual method that runs the game
-    * Displays the game screen
-    * @param tableView Display
-    * @throws InterruptedException for the method
-    */
-    public void StartGame(TableView tableView) throws InterruptedException{
+     * The actual method that runs the game
+     * Displays the game screen
+     *
+     * @param tableView Display
+     * @throws InterruptedException for the method
+     */
+    public void StartGame(TableView tableView) throws InterruptedException {
         BoardController boardController = new BoardController(board);
-        Position[] p =null;
-        while(!boardController.isEnd()){
+        Position[] p = null;
+        while (!boardController.isEnd()) {
             while (!tableView.isFinished()) {
-                p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
+                p = tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
                 Thread.sleep(PAUSE);
             }
-            if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
+            if (boardController.moveRules(p[0], p[1]) == 1) // valid move = 1, invalid move = 0
             {
                 board.setBoard(boardController.getBlocks());
-                turn = changeTurn(player1, player2,turn);
+                turn = changeTurn(player1, player2, turn);
                 tableView.updateTable(board);
-            }
-            else{
+            } else {
                 tableView.updateTable(board);
                 tableView.changeTurn();//didn't move so do not have to change turn but in updateTable() has it so call this again;
             }
             tableView.setFinished(false);
         }
-        turn=changeTurn(player1, player2,turn);
-        JOptionPane.showMessageDialog(null,"Victory!\n " + turn.getName() + " won! \nCongratulations!");
+        turn = changeTurn(player1, player2, turn);
+        JOptionPane.showMessageDialog(null, "Victory!\n " + turn.getName() + " won! \nCongratulations!");
     }
 
     /**
-     *
-     * @param p1 first player
-     * @param p2 second player
+     * @param p1   first player
+     * @param p2   second player
      * @param turn current player's turn
      * @return other player's turn
      */

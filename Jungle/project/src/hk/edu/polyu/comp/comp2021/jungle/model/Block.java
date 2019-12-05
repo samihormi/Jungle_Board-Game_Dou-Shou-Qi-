@@ -7,7 +7,7 @@ import org.jetbrains.annotations.Nullable;
  * Assigns a type to each block
  * Assigns a side of the board to each player
  */
-public class Block implements java.io.Serializable{
+public class Block implements java.io.Serializable {
 
     @Nullable
     private Animal a;
@@ -18,14 +18,13 @@ public class Block implements java.io.Serializable{
     /**
      * Constructor of the class
      */
-    public Block(){
+    public Block() {
         this.a = null;
         this.blockType = 0;
         this.player = null;
     }
 
     /**
-     *
      * @return animal existing on block
      */
     public Animal getA() {
@@ -33,15 +32,13 @@ public class Block implements java.io.Serializable{
     }
 
     /**
-     *
-      * @param a initializes animal
+     * @param a initializes animal
      */
     public void setA(Animal a) {
         this.a = a;
     }
 
     /**
-     *
      * @return type of block
      */
     public int getBlockType() {
@@ -49,7 +46,6 @@ public class Block implements java.io.Serializable{
     }
 
     /**
-     *
      * @param blockType initializes blockType
      */
     public void setBlockType(int blockType) {
@@ -57,18 +53,16 @@ public class Block implements java.io.Serializable{
     }
 
     /**
-     *
      * @param player initializes player
      */
-    public void setPlayer(Player player){
-        this.player=player;
+    public void setPlayer(Player player) {
+        this.player = player;
     }
 
     /**
-     *
      * @return player on particular block
      */
-    public Player getPlayer(){
+    public Player getPlayer() {
         return player;
     }
 }

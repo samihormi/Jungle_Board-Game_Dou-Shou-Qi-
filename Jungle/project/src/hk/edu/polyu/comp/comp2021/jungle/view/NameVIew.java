@@ -22,7 +22,7 @@ public class NameVIew {
     /**
      * Initializes the window
      */
-    public NameVIew(){
+    public NameVIew() {
         this.NFrame = new JFrame("Jungle Game");
         NFrame.setContentPane(panelMain);
         NFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -32,10 +32,10 @@ public class NameVIew {
         startGameButton.addActionListener(new ActionListener() {
             @Override
             public void actionPerformed(ActionEvent e) {
-                if(playerName1.getText() != null){
+                if (playerName1.getText() != null) {
                     Name1 = playerName1.getText();
                 }
-                if(playerName2.getText() != null){
+                if (playerName2.getText() != null) {
                     Name2 = playerName2.getText();
                 }
                 isGameStarted = true;
@@ -45,7 +45,6 @@ public class NameVIew {
     }
 
     /**
-     *
      * @return first player's name
      */
     public String getName1() {
@@ -53,7 +52,6 @@ public class NameVIew {
     }
 
     /**
-     *
      * @return second player's name
      */
     public String getName2() {
@@ -62,9 +60,10 @@ public class NameVIew {
 
     /**
      * Checks whether the game is launched
+     *
      * @return isGameStarted
      */
-    public boolean isGameStarted(){
+    public boolean isGameStarted() {
         return isGameStarted;
     }
 }

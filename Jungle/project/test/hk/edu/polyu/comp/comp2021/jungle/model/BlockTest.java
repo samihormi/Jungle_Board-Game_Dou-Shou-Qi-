@@ -4,14 +4,14 @@ import org.junit.Assert;
 import org.junit.Test;
 
 /**
-     * Block Class Test
-     */
+ * Block Class Test
+ */
 public class BlockTest {
     /**
      * Full Class Test
      */
     @Test
-    public void blockTest(){
+    public void blockTest() {
         Block actual = new Block();
         Position p = new Position(4, 2);
         Player ply = new Player("Kate", 2);

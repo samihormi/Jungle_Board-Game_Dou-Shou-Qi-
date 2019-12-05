@@ -3,22 +3,20 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
 /**
  * Create position from cartesian coordinates
  */
-public class Position implements java.io.Serializable{
+public class Position implements java.io.Serializable {
     private int x;
     private int y;
 
     /**
-     *
      * @param y position
      * @param x position
      */
-    public Position(int y, int x){
+    public Position(int y, int x) {
         setX(x);
         setY(y);
     }
 
     /**
-     *
      * @return x position
      */
     public int getX() {
@@ -26,7 +24,6 @@ public class Position implements java.io.Serializable{
     }
 
     /**
-     *
      * @param x initialize x position
      */
     public void setX(int x) {
@@ -34,15 +31,13 @@ public class Position implements java.io.Serializable{
     }
 
     /**
-     *
-     * @return  y position
+     * @return y position
      */
     public int getY() {
         return y;
     }
 
     /**
-     *
      * @param y initialize y position
      */
     public void setY(int y) {

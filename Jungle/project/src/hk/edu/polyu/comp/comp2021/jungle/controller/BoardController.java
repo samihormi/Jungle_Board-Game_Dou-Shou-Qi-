@@ -15,23 +15,21 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
     private Block[][] blocks;
 
     /**
-     *
      * @param board initializes board
      */
-    public BoardController(Board board){
+    public BoardController(Board board) {
         blocks = board.getBoard();
     }
 
     /**
-     *
      * @param p1 initial position of element
      * @param p2 final position of element
      * @return validity of a move
      */
-    public int moveRules(Position p1, Position p2){ //move:1, invalid move:0
+    public int moveRules(Position p1, Position p2) { //move:1, invalid move:0
         //isvalidmove() but there is exception
         final int sixteen = 16;
-        if(p1.getY()==p2.getY()&&p1.getX()==p2.getX())
+        if (p1.getY() == p2.getY() && p1.getX() == p2.getX())
             return 0;
         if (Math.pow(p1.getX() - p2.getX(), 2) + Math.pow(p1.getY() - p2.getY(), 2) == 1) //check distance = 1 -> exception when tiger cross the river
         {
@@ -42,26 +40,24 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                         {
                             if (!((blocks[p1.getY()][p1.getX()].getBlockType() == 1 && blocks[p2.getY()][p2.getX()].getBlockType() != 1))) // river to land
                             {
-                                if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()){
+                                if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
                                     eat(p1, p2);
                                     return 1;
                                 }
                             }
 
-                        }
-                        else if(blocks[p1.getY()][p1.getX()].getA().getRank() == 1){
-                            if(blocks[p1.getY()][p1.getX()].getBlockType()!=1){
-                                if(blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank()) {
+                        } else if (blocks[p1.getY()][p1.getX()].getA().getRank() == 1) {
+                            if (blocks[p1.getY()][p1.getX()].getBlockType() != 1) {
+                                if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank()) {
                                     if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
                                         eat(p1, p2);
                                         return 1;
                                     }
                                 }
                             }
-                        }
-                        else if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
+                        } else if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
                         {
-                            if(!(blocks[p1.getY()][p1.getX()].getA().getRank()==8 && blocks[p2.getY()][p2.getX()].getA().getRank()==1)) {
+                            if (!(blocks[p1.getY()][p1.getX()].getA().getRank() == 8 && blocks[p2.getY()][p2.getX()].getA().getRank() == 1)) {
                                 if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
                                     eat(p1, p2);
                                     return 1;
@@ -70,7 +66,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                         }
 
                     } else { //trap
-                        if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
+                        if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
                             eat(p1, p2);
                             return 1;
                         }
@@ -81,13 +77,12 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             } else {//river
                 if (blocks[p1.getY()][p1.getX()].getA().getRank() == 1) {
-                    if (blocks[p2.getY()][p2.getX()].getA()== null) {
+                    if (blocks[p2.getY()][p2.getX()].getA() == null) {
                         move(p1, p2);
                         return 1;
-                    }
-                    else{
-                        if(blocks[p1.getY()][p1.getX()].getBlockType()==1){
-                            eat(p1,p2);
+                    } else {
+                        if (blocks[p1.getY()][p1.getX()].getBlockType() == 1) {
+                            eat(p1, p2);
                             return 1;
                         }
                     }
@@ -98,7 +93,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 if (blocks[p2.getY()][p2.getX()].getA() != null) {
                     if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
                         if (!checkThereIsRat(p1, p2, "X")) {
-                            if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
+                            if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
                                 eat(p1, p2);
                                 return 1;
                             }
@@ -115,7 +110,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 if (blocks[p2.getY()][p2.getX()].getA() != null) {
                     if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
                         if (!checkThereIsRat(p1, p2, "Y")) {
-                            if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
+                            if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
                                 eat(p1, p2);
                                 return 1;
                             }
@@ -128,42 +123,44 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
-        JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
+        JOptionPane.showMessageDialog(null, "invalid move", "ERROR_MESSAGE", JOptionPane.ERROR_MESSAGE);
         return 0;
     }
-    private boolean checkThereIsRat(Position p,Position d,String x){
-        if(x.equals("X")){
-            if(p.getX()==1||p.getX()==2){
+
+    private boolean checkThereIsRat(Position p, Position d, String x) {
+        if (x.equals("X")) {
+            if (p.getX() == 1 || p.getX() == 2) {
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 1; j <= 2; j++) {
-                        if(blocks[i][j].getA()!=null){
-                            return true;}
+                        if (blocks[i][j].getA() != null) {
+                            return true;
+                        }
                     }
                 }
-            }
-            else{
+            } else {
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 4; j <= 5; j++) {
-                        if(blocks[i][j].getA()!=null){
-                            return true;}
+                        if (blocks[i][j].getA() != null) {
+                            return true;
+                        }
                     }
                 }
             }
-        }
-        else if(x.equals("Y")){
-            if((p.getX()+d.getX())/2==1){
+        } else if (x.equals("Y")) {
+            if ((p.getX() + d.getX()) / 2 == 1) {
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 1; j <= 2; j++) {
-                        if(blocks[i][j].getA()!=null){
-                            return true;}
+                        if (blocks[i][j].getA() != null) {
+                            return true;
+                        }
                     }
                 }
-            }
-            else{
+            } else {
                 for (int i = 3; i <= 5; i++) {
                     for (int j = 4; j <= 5; j++) {
-                        if(blocks[i][j].getA()!=null){
-                            return true;}
+                        if (blocks[i][j].getA() != null) {
+                            return true;
+                        }
                     }
                 }
             }
@@ -171,35 +168,34 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
         return false;
     }
 
-    private void move(Position p1, Position p2){
+    private void move(Position p1, Position p2) {
         blocks[p2.getY()][p2.getX()].setA(blocks[p1.getY()][p1.getX()].getA());
         blocks[p1.getY()][p1.getX()].setA(null);
     }
-    private void eat(Position p1, Position p2){
+
+    private void eat(Position p1, Position p2) {
         blocks[p2.getY()][p2.getX()].setA(blocks[p1.getY()][p1.getX()].getA());
         blocks[p1.getY()][p1.getX()].setA(null);
     }
 
     /**
-     *
      * @return checks if there is a winner to end the game
      */
-    public boolean isEnd(){
-        Player p=null;
-        if(blocks[0][3].getA()!=null) {
+    public boolean isEnd() {
+        Player p = null;
+        if (blocks[0][3].getA() != null) {
             if (blocks[0][3].getA().getPly() != blocks[0][3].getPlayer()) { //arrive den
                 return true;
             }
-        }
-        else if(blocks[8][3].getA()!=null){
-            if(blocks[8][3].getA().getPly()!=blocks[8][3].getPlayer()){//arrive den
+        } else if (blocks[8][3].getA() != null) {
+            if (blocks[8][3].getA().getPly() != blocks[8][3].getPlayer()) {//arrive den
                 return true;
             }
         }
 
-        for(int i=0;i<9;i++){
-            for(int j=0;j<7;j++){
-                if(blocks[i][j].getA()!=null) {
+        for (int i = 0; i < 9; i++) {
+            for (int j = 0; j < 7; j++) {
+                if (blocks[i][j].getA() != null) {
                     if (p == null && blocks[i][j].getA().getPly() != null)
                         p = blocks[i][j].getA().getPly();
                     if (blocks[i][j].getA().getPly() != p)
@@ -211,8 +207,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
     }
 
     /**
-     * 
-     * @return blocks 
+     * @return blocks
      */
     public Block[][] getBlocks() {
         return blocks;

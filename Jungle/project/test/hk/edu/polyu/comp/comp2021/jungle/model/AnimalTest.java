@@ -11,8 +11,8 @@ public class AnimalTest {
      * Animal Test
      */
     @Test
-    public void animalTest(){
-        Position p = new Position(1,2);
+    public void animalTest() {
+        Position p = new Position(1, 2);
         Player ply = new Player("Mark", 1);
         Animal actual = new Animal(2, p, ply);
         Assert.assertEquals(ply, actual.getPly());
