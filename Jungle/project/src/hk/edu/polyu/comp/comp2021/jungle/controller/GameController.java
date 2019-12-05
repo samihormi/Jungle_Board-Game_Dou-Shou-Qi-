@@ -11,10 +11,10 @@ import javax.swing.*;
 
 public class GameController {
     private int pause = 200;
-    public Player player1;
-    public Player player2;
-    public Player turn;
-    public Board board;
+    private Player player1;
+    private Player player2;
+    private Player turn;
+    private Board board;
 
     /**
      *
@@ -67,6 +67,10 @@ public class GameController {
                 board.setBoard(boardController.getBlocks());
                 turn = changeTurn(player1, player2,turn);
                 tableView.updateTable(board);
+            }
+            else{
+                tableView.updateTable(board);
+                tableView.changeTurn();//didn't move so do not have to change turn but in updateTable() has it so call this again;
             }
             tableView.setFinished(false);
         }

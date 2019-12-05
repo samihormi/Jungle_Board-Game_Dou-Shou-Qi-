@@ -34,7 +34,7 @@ public class TableView {
     private final int width = 80;
     private final int height = 60;
     private JLabel turnLabel;
-    String imgPath = TableView.class.getResource("").getPath();
+    private String imgPath = TableView.class.getResource("").getPath();
 
     /**
      *
@@ -66,10 +66,7 @@ public class TableView {
      *  Updates board according to the movement
      */
     public void updateTable(Board board){
-        if(turn.getId()==p1.getId())
-            turn=p2;
-        else
-            turn=p1;
+        changeTurn();
         this.board=board;
         gameFrame.remove(boardPanel);
         gameFrame.remove(turnLabel);
@@ -115,7 +112,7 @@ public class TableView {
      *  Generates the Board Panel
      */
     private class BoardPanel extends JPanel{
-        final List<TilePanel> boardTiles;
+        protected final List<TilePanel> boardTiles;
 
         BoardPanel(Board board){
             super(new GridLayout(9,7));
@@ -386,7 +383,6 @@ public class TableView {
                     position[1] = new Position(tileY,tileX);
                     isFinished=true;
                     isFrist=false;
-
                 }
             }
 
@@ -403,6 +399,12 @@ public class TableView {
         }
     }
 
+    public void changeTurn() {
+        if(turn.getId()==p1.getId())
+            turn=p2;
+        else
+            turn=p1;
+    }
     /**
      *
      * @param player player
