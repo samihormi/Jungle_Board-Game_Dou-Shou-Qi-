@@ -193,7 +193,7 @@ public class TableView {
 
         /**
          * Assigns an animal to each panel depending on its position
-         * @param board
+         * @param board current board
          */
         public void assignAnimal(Board board) {
             Block[][] blocks = board.getBoard();
@@ -396,6 +396,9 @@ public class TableView {
         }
     }
 
+    /**
+     * Changes current player
+     */
     public void changeTurn() {
         if(turn.getId()==p1.getId())
             turn=p2;
@@ -410,19 +413,27 @@ public class TableView {
     public Position[] getInputFromTable (Player player){
         return position;
     }
-
+    /**
+     * Checks for the starting position
+     */
     public boolean isFrist() {
         return isFrist;
     }
-
+    /**
+     * Sets starting position
+     */
     public void setFrist(boolean frist) {
         isFrist = frist;
     }
-
+    /**
+     * Checks for destination
+     */
     public boolean isFinished() {
         return isFinished;
     }
-
+    /**
+     * Sets destination position
+     */
     public void setFinished(boolean finished) {
         isFinished = finished;
     }
