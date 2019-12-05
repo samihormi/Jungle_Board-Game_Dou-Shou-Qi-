@@ -61,6 +61,7 @@ public class GameController {
     * The actual method that runs the game
     * Displays the game screen
     * @param tableView Display
+    * @throws InterruptedException for the method
     */
     public void StartGame(TableView tableView) throws InterruptedException{
         BoardController boardController = new BoardController(board);
