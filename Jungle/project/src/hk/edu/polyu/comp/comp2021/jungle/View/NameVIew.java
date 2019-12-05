@@ -17,7 +17,7 @@ public class NameVIew {
     private JButton startGameButton;
     private String Name1 = "";
     private String Name2 = "";
-    protected boolean isGameStarted = false;
+    private boolean isGameStarted = false;
 
     /**
      * Initializes the window
