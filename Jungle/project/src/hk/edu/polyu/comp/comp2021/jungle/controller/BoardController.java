@@ -61,9 +61,11 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                         }
                         else if (blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank())//if rank is higher than enemy
                         {
-                            if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
-                                eat(p1, p2);
-                                return 1;
+                            if(!(blocks[p1.getY()][p1.getX()].getA().getRank()==8 && blocks[p2.getY()][p2.getX()].getA().getRank()==1)) {
+                                if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
+                                    eat(p1, p2);
+                                    return 1;
+                                }
                             }
                         }
 

@@ -34,7 +34,6 @@ public class Application {
             }
             if (startView.isNewGame) {
                 gameStarted=true;
-                loadComplete=true;
                 NameVIew nameVIew = new NameVIew();
                 while (!nameVIew.isGameStarted) {
                     Thread.sleep(time);
