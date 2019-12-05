@@ -15,6 +15,8 @@ public class SaveGameController implements java.io.Serializable {
     public Board board;
     public Player p1,p2,turn;
 
+    public SaveGameController(){
+    }
     /**
      *
      * @param board game board
@@ -22,14 +24,17 @@ public class SaveGameController implements java.io.Serializable {
      * @param p2 player2
      * @param turn player's turn
      */
-    public SaveGameController(Board board, Player p1, Player p2, Player turn){
+    public void SaveGame(Board board, Player p1, Player p2, Player turn){
         this.board=board;
         this.p1=p1;
         this.p2=p2;
         this.turn=turn;
+        String fname="";
         try {
-            String fname = JOptionPane.showInputDialog("enter file name")+".save";
-            ResourceManager.save(this,fname);
+            while (fname.length()==0){
+                fname = JOptionPane.showInputDialog("enter file name");}
+            ResourceManager.save(this,fname+".save");
+
         } catch (Exception e) {
             System.out.println("Couldn't save: " + e.getMessage());
         }

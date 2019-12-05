@@ -3,8 +3,11 @@ package hk.edu.polyu.comp.comp2021.jungle.View;
 
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
+import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -100,7 +103,8 @@ public class TableView {
         saveG.addActionListener(new java.awt.event.ActionListener() {
             @Override
             public void actionPerformed(java.awt.event.ActionEvent e) {
-                SaveGameController s = new SaveGameController(board,p1,p2,turn);
+                SaveGameController s = new SaveGameController();
+                s.SaveGame(board,p1,p2,turn);
             }
         });
         fileMenu.add(saveG);
@@ -371,14 +375,18 @@ public class TableView {
                         System.out.println(tileY+","+tileX);
                         position[0] = new Position(tileY, tileX);
                         isFrist=true;
+                        JLabel j = (JLabel)e.getSource();
+                        j.setBorder(BorderFactory.createLineBorder(Color.RED));
                     }
+                    else
+                        JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
                     System.out.println(tileY+","+tileX);
                     position[1] = new Position(tileY,tileX);
                     isFinished=true;
-                    System.out.println("input finish");
                     isFrist=false;
+
                 }
             }
 

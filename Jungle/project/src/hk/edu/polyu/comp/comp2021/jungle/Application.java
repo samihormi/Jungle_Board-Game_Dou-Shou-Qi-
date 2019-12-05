@@ -39,16 +39,18 @@ public class Application {
             GameController gc = new GameController(player1.getName(),player2.getName());// start playing the game
         }
         else{//load game
-            Board board = new Board(player1,player2);
-            GameController gc = new GameController(player1,player2,board,player1);
+            Board board;
+            GameController gc;
             TableView tableView = null;
             try {
                 SaveGameController s1 = (SaveGameController) ResourceManager.load("Game69.save");
                 tableView = s1.loadGame();
+                board = new Board(s1.p1,s1.p2);
+                gc = new GameController(s1.p1,s1.p2,s1.board,s1.turn);
+                gc.StartGame(tableView);
             } catch (Exception e) {
                 e.printStackTrace();
             }
-            gc.StartGame(tableView);
         }
 
     }
