@@ -11,10 +11,10 @@ import javax.swing.*;
 
 public class GameController {
     private int pause = 200;
-    public Player player1;
-    public Player player2;
-    public Player turn;
-    public Board board;
+    private Player player1;
+    private Player player2;
+    private Player turn;
+    private Board board;
 
     /**
      *
