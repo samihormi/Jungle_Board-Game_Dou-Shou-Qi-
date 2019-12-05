@@ -5,6 +5,10 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.InputStream;
+
 
 /**
  * Welcome window prompting users to start new game or load a saved one
@@ -17,6 +21,7 @@ public class StartView{
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(530, 600);
     public boolean isNewGame = false;
     public boolean isLoadGame = false;
+
 
 
     /**
@@ -48,6 +53,7 @@ public class StartView{
         SFrame.pack();
         SFrame.setVisible(true);
     }
+
 
     private void createUIComponents() {
         // TODO: place custom component creation code here
