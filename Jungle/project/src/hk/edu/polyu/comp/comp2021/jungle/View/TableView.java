@@ -193,7 +193,7 @@ public class TableView {
 
         /**
          * Assigns an animal to each panel depending on its position
-         * @param board
+         * @param board current board
          */
         public void assignAnimal(Board board) {
             Block[][] blocks = board.getBoard();
@@ -365,11 +365,9 @@ public class TableView {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.out.println("mouseClicked");
                 //JPanel panel = (JPanel)e.getSource();
                 if(!isFrist) {
                     if(board.getBoard()[tileY][tileX].getA()!=null&&board.getBoard()[tileY][tileX].getA().getPly().getId()==turn.getId()){
-                        System.out.println(tileY+","+tileX);
                         position[0] = new Position(tileY, tileX);
                         isFrist=true;
                         JLabel j = (JLabel)e.getSource();
@@ -379,7 +377,6 @@ public class TableView {
                         JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                    System.out.println(tileY+","+tileX);
                     position[1] = new Position(tileY,tileX);
                     isFinished=true;
                     isFrist=false;
@@ -399,6 +396,9 @@ public class TableView {
         }
     }
 
+    /**
+     * Changes current player
+     */
     public void changeTurn() {
         if(turn.getId()==p1.getId())
             turn=p2;
@@ -413,19 +413,27 @@ public class TableView {
     public Position[] getInputFromTable (Player player){
         return position;
     }
-
+    /**
+     * Checks for the starting position
+     */
     public boolean isFrist() {
         return isFrist;
     }
-
+    /**
+     * Sets starting position
+     */
     public void setFrist(boolean frist) {
         isFrist = frist;
     }
-
+    /**
+     * Checks for destination
+     */
     public boolean isFinished() {
         return isFinished;
     }
-
+    /**
+     * Sets destination position
+     */
     public void setFinished(boolean finished) {
         isFinished = finished;
     }

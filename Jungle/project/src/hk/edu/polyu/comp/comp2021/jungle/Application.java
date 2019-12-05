@@ -29,10 +29,10 @@ public class Application {
         Boolean loadComplete=false,gameStarted=false;
         while (!loadComplete||!gameStarted) {
             startView = new StartView();
-            while (!startView.isNewGame && !startView.isLoadGame) {
+            while (!startView.isNewGame() && !startView.isLoadGame()) {
                 Thread.sleep(time);
             }
-            if (startView.isNewGame) {
+            if (startView.isNewGame()) {
                 gameStarted=true;
                 NameVIew nameVIew = new NameVIew();
                 while (!nameVIew.isGameStarted()) {

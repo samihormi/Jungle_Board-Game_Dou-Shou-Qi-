@@ -3,14 +3,13 @@ package hk.edu.polyu.comp.comp2021.jungle.controller;
 import hk.edu.polyu.comp.comp2021.jungle.View.TableView;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
+import javax.swing.*;
 /**
  * Starts the game
  * Displays the game screen
  */
-import javax.swing.*;
-
 public class GameController {
-    private int pause = 200;
+    private final static int PAUSE = 200;
     private Player player1;
     private Player player2;
     private Player turn;
@@ -25,6 +24,7 @@ public class GameController {
         try {
             prepareStartGame(player1_name, player2_name);
         } catch (InterruptedException e) {
+            System.out.println("Error!");
         }
     }
 
@@ -42,6 +42,13 @@ public class GameController {
         this.turn = turn;
     }
 
+    /**
+    * Responsible for preparing variable
+    * Starts the Game
+    * @param player1_name Name1
+    * @param player2_name Name2
+    * @throws InterruptedException for interruption 
+    */
     public void prepareStartGame(String player1_name,String player2_name) throws InterruptedException{
         player1 = new Player(player1_name, 1);
         player2 = new Player(player2_name, 2);
@@ -51,17 +58,20 @@ public class GameController {
         StartGame(tableView);
     }
 
-
+    /**
+    * The actual method that runs the game
+    * Displays the game screen
+    * @param tableView Display
+    * @throws InterruptedException for the method
+    */
     public void StartGame(TableView tableView) throws InterruptedException{
         BoardController boardController = new BoardController(board);
         Position p[]=null;
         while(!boardController.isEnd()){
-            System.out.println("turn:"+turn.getId());
             while (!tableView.isFinished()) {
                 p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
-                Thread.sleep(pause);
+                Thread.sleep(PAUSE);
             }
-            System.out.println("p[o]xy:("+p[0].getX()+","+p[0].getY()+") p[1]xy("+p[1].getX()+","+p[1].getY()+")");
             if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             {
                 board.setBoard(boardController.getBlocks());
@@ -74,7 +84,6 @@ public class GameController {
             }
             tableView.setFinished(false);
         }
-        System.out.println("isend end");
         turn=changeTurn(player1, player2,turn);
         JOptionPane.showMessageDialog(null,"Victory! " + turn.getName() + " won! Congratulations!");
     }

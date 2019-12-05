@@ -19,11 +19,25 @@ public class StartView{
     private JButton loadGameButton;
     private JPanel panelMain;
     private static final Dimension OUTER_FRAME_DIMENSION = new Dimension(530, 600);
-    public boolean isNewGame = false;
-    public boolean isLoadGame = false;
+    private boolean isNewGame = false;
+    private boolean isLoadGame = false;
+
+    /**
+     *
+     * @return user selection for new game
+     */
+    public boolean isNewGame(){
+        return isNewGame;
+    }
 
 
-
+    /**
+     *
+     * @return user selection for load game
+     */
+    public boolean isLoadGame(){
+        return isLoadGame;
+    }
     /**
      * Initialize the window
      */

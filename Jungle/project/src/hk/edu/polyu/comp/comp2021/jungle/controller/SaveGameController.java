@@ -15,6 +15,9 @@ public class SaveGameController implements java.io.Serializable {
     private Board board;
     private Player p1,p2,turn;
 
+    /**
+    * Default constructor
+    */
     public SaveGameController(){
     }
     /**
@@ -36,7 +39,6 @@ public class SaveGameController implements java.io.Serializable {
             ResourceManager.save(this,fname+".save");
 
         } catch (Exception e) {
-            System.out.println("Couldn't save: " + e.getMessage());
         }
     }
 

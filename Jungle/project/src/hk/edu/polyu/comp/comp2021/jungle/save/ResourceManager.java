@@ -14,7 +14,7 @@ public class ResourceManager {
      *
      * @param data game
      * @param fileName name of file
-     * @throws Exception
+     * @throws Exception if cannot be saved
      */
     public static void save(Serializable data, String fileName) throws Exception {
         try (ObjectOutputStream oos = new ObjectOutputStream(Files.newOutputStream(Paths.get(fileName)))) {
@@ -27,7 +27,7 @@ public class ResourceManager {
      *
      * @param fileName name of file
      * @return saved game file
-     * @throws Exception
+     * @throws Exception if cannot be loaded
      */
     public static Object load(String fileName) throws Exception {
         JFileChooser jfc = new JFileChooser(".");

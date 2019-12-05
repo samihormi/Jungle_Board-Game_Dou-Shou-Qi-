@@ -207,7 +207,6 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
-        System.out.println(Objects.requireNonNull(p).getName()+"win");
         return true;
     }
 
