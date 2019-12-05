@@ -67,6 +67,10 @@ public class GameController {
                 turn = changeTurn(player1, player2,turn);
                 tableView.updateTable(board);
             }
+            else{
+                tableView.updateTable(board);
+                tableView.changeTurn();//didn't move so do not have to change turn but in updateTable() has it so call this again;
+            }
             tableView.setFinished(false);
         }
         System.out.println("isend end");

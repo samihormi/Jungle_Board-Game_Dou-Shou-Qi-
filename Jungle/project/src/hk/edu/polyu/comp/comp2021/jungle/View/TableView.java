@@ -66,10 +66,7 @@ public class TableView {
      *  Updates board according to the movement
      */
     public void updateTable(Board board){
-        if(turn.getId()==p1.getId())
-            turn=p2;
-        else
-            turn=p1;
+        changeTurn();
         this.board=board;
         gameFrame.remove(boardPanel);
         gameFrame.remove(turnLabel);
@@ -386,7 +383,6 @@ public class TableView {
                     position[1] = new Position(tileY,tileX);
                     isFinished=true;
                     isFrist=false;
-
                 }
             }
 
@@ -403,6 +399,12 @@ public class TableView {
         }
     }
 
+    public void changeTurn() {
+        if(turn.getId()==p1.getId())
+            turn=p2;
+        else
+            turn=p1;
+    }
     /**
      *
      * @param player player
