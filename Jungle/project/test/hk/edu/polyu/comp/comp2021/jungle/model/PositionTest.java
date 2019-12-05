@@ -1,4 +1,15 @@
 package hk.edu.polyu.comp.comp2021.jungle.model;
 
+import org.junit.Assert;
+import org.junit.Test;
+
 public class PositionTest {
+    @Test
+    public void positionTest() throws Exception{
+        Position actual = new Position(5, 1);
+        actual.setY(4);
+        actual.setX(3);
+        Assert.assertEquals(4, actual.getY());
+        Assert.assertEquals(3,actual.getX());
+    }
 }
