@@ -66,12 +66,10 @@ public class GameController {
         BoardController boardController = new BoardController(board);
         Position p[]=null;
         while(!boardController.isEnd()){
-            System.out.println("turn:"+turn.getId());
             while (!tableView.isFinished()) {
                 p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
                 Thread.sleep(pause);
             }
-            System.out.println("p[o]xy:("+p[0].getX()+","+p[0].getY()+") p[1]xy("+p[1].getX()+","+p[1].getY()+")");
             if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
             {
                 board.setBoard(boardController.getBlocks());
@@ -84,7 +82,6 @@ public class GameController {
             }
             tableView.setFinished(false);
         }
-        System.out.println("isend end");
         turn=changeTurn(player1, player2,turn);
         JOptionPane.showMessageDialog(null,"Victory! " + turn.getName() + " won! Congratulations!");
     }

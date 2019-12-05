@@ -365,11 +365,9 @@ public class TableView {
 
             @Override
             public void mouseReleased(MouseEvent e) {
-                System.out.println("mouseClicked");
                 //JPanel panel = (JPanel)e.getSource();
                 if(!isFrist) {
                     if(board.getBoard()[tileY][tileX].getA()!=null&&board.getBoard()[tileY][tileX].getA().getPly().getId()==turn.getId()){
-                        System.out.println(tileY+","+tileX);
                         position[0] = new Position(tileY, tileX);
                         isFrist=true;
                         JLabel j = (JLabel)e.getSource();
@@ -379,7 +377,6 @@ public class TableView {
                         JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
-                    System.out.println(tileY+","+tileX);
                     position[1] = new Position(tileY,tileX);
                     isFinished=true;
                     isFrist=false;
