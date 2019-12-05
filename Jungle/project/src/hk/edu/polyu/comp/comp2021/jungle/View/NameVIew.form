@@ -6,7 +6,7 @@
       <xy x="20" y="20" width="500" height="379"/>
     </constraints>
     <properties>
-      <background color="-4868683"/>
+      <background color="-13883855"/>
     </properties>
     <border type="none"/>
     <children>
@@ -23,6 +23,7 @@
           <grid row="0" column="0" row-span="1" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <foreground color="-1"/>
           <text value="Player 1 Name:"/>
         </properties>
       </component>
@@ -52,6 +53,7 @@
           <grid row="1" column="0" row-span="2" col-span="1" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <foreground color="-1"/>
           <text value="Player 2 Name:"/>
         </properties>
       </component>
