@@ -3,7 +3,13 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+     * Block Class Test
+     */
 public class BlockTest {
+    /**
+     * Full Class Test
+     */
     @Test
     public void blockTest() throws Exception{
         Block actual = new Block();
