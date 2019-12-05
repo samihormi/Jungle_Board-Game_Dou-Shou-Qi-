@@ -3,8 +3,13 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
 import org.junit.Assert;
 import org.junit.Test;
 
-
+/**
+ * Animal class Test
+ */
 public class AnimalTest {
+    /**
+     * Animal Test
+     */
     @Test
     public void animalTest() throws Exception{
         Position p = new Position(1,2);
