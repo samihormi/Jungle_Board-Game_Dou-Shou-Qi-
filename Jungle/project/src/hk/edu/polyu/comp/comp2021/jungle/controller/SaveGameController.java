@@ -10,10 +10,10 @@ import javax.swing.*;
  * Saves elements of the game
  */
 public class SaveGameController implements java.io.Serializable {
-    public static final long serialVersionUID = 1L;
+    private static final long serialVersionUID = 1L;
 
-    public Board board;
-    public Player p1,p2,turn;
+    private Board board;
+    private Player p1,p2,turn;
 
     public SaveGameController(){
     }
@@ -39,11 +39,43 @@ public class SaveGameController implements java.io.Serializable {
             System.out.println("Couldn't save: " + e.getMessage());
         }
     }
+
+    /**
+     * Loads window
+     * @return loadedGame
+     */
     public TableView loadGame(){
         TableView loadedGame;
         loadedGame = new TableView(board,p1,p2,turn);
         return loadedGame;
     }
 
+    /**
+     * @return board
+     */
+    public Board getBoard(){
+        return board;
+    }
+
+    /**
+     * @return Player 1
+     */
+    public Player getP1(){
+        return p1;
+    }
+    
+    /**
+     * @return Player 2
+     */
+    public Player getP2(){
+        return p2;
+    }
+
+    /**
+     * @return Turn
+     */
+    public Player getTurn(){
+        return turn;
+    }
 
 }
