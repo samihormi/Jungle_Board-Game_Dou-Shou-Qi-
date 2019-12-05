@@ -6,6 +6,8 @@ import hk.edu.polyu.comp.comp2021.jungle.controller.SaveGameController;
 import hk.edu.polyu.comp.comp2021.jungle.save.ResourceManager;
 
 import javax.swing.*;
+import javax.swing.border.Border;
+import javax.swing.border.LineBorder;
 import java.awt.*;
 import java.awt.event.*;
 import java.util.*;
@@ -373,6 +375,8 @@ public class TableView {
                         System.out.println(tileY+","+tileX);
                         position[0] = new Position(tileY, tileX);
                         isFrist=true;
+                        JLabel j = (JLabel)e.getSource();
+                        j.setBorder(BorderFactory.createLineBorder(Color.RED));
                     }
                     else
                         JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
@@ -381,8 +385,8 @@ public class TableView {
                     System.out.println(tileY+","+tileX);
                     position[1] = new Position(tileY,tileX);
                     isFinished=true;
-                    System.out.println("input finish");
                     isFrist=false;
+
                 }
             }
 
