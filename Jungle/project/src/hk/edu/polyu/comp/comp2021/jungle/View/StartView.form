@@ -1,66 +1,60 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <form xmlns="http://www.intellij.com/uidesigner/form/" version="1" bind-to-class="hk.edu.polyu.comp.comp2021.jungle.View.StartView">
-  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="5" column-count="4" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
+  <grid id="27dc6" binding="panelMain" layout-manager="GridLayoutManager" row-count="3" column-count="2" same-size-horizontally="false" same-size-vertically="false" hgap="-1" vgap="-1">
     <margin top="0" left="0" bottom="0" right="0"/>
     <constraints>
-      <xy x="85" y="4" width="830" height="313"/>
+      <xy x="71" y="374" width="1090" height="850"/>
     </constraints>
     <properties>
-      <background color="-4868683"/>
+      <background color="-13883855"/>
+      <focusable value="false"/>
     </properties>
     <border type="none"/>
     <children>
       <component id="c58f5" class="javax.swing.JButton" binding="newGameButton" default-binding="true">
         <constraints>
-          <grid row="2" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="1" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-1"/>
+          <autoscrolls value="false"/>
+          <background color="-13883855"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
           <enabled value="true"/>
           <foreground color="-16777216"/>
           <hideActionText value="true"/>
+          <opaque value="true"/>
           <text value="New Game"/>
         </properties>
       </component>
       <component id="421c4" class="javax.swing.JButton" binding="loadGameButton" default-binding="true">
         <constraints>
-          <grid row="3" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
+          <grid row="2" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="3" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
-          <background color="-1"/>
+          <background color="-13883855"/>
+          <borderPainted value="true"/>
+          <contentAreaFilled value="true"/>
           <enabled value="true"/>
           <foreground color="-16777216"/>
+          <margin top="0" left="0" bottom="0" right="0"/>
+          <opaque value="true"/>
+          <selected value="false"/>
           <text value="Load Game"/>
+          <verticalAlignment value="0"/>
         </properties>
       </component>
-      <hspacer id="69472">
-        <constraints>
-          <grid row="2" column="3" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
-      <hspacer id="eebfe">
-        <constraints>
-          <grid row="2" column="0" row-span="1" col-span="1" vsize-policy="1" hsize-policy="6" anchor="0" fill="1" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </hspacer>
-      <vspacer id="6947c">
-        <constraints>
-          <grid row="1" column="2" row-span="1" col-span="1" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
-      <vspacer id="fea7e">
-        <constraints>
-          <grid row="4" column="1" row-span="1" col-span="2" vsize-policy="6" hsize-policy="1" anchor="0" fill="2" indent="0" use-parent-layout="false"/>
-        </constraints>
-      </vspacer>
       <component id="a153a" class="javax.swing.JLabel">
         <constraints>
-          <grid row="0" column="1" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
+          <grid row="0" column="0" row-span="1" col-span="2" vsize-policy="0" hsize-policy="0" anchor="8" fill="0" indent="0" use-parent-layout="false"/>
         </constraints>
         <properties>
+          <autoscrolls value="true"/>
+          <background color="-13883855"/>
           <font size="20" style="1"/>
           <foreground color="-16777216"/>
-          <text value="Welcome to Jungle Game!"/>
+          <icon value="hk/edu/polyu/comp/comp2021/jungle/View/sources/Welcome.png"/>
+          <text value=""/>
         </properties>
       </component>
     </children>

@@ -182,7 +182,7 @@ public class TableView {
                 case 3: {
                     setBackground(white);
                     JLabel label = new JLabel();
-                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/den.jpg").getImage().getScaledInstance(80, 60, Image.SCALE_DEFAULT));
+                    ImageIcon imageIcon = new ImageIcon(new ImageIcon(imgPath + "/sources/den.jpg").getImage().getScaledInstance(width, height, Image.SCALE_DEFAULT));
                     label.setIcon(imageIcon);
 
                     add(label);
