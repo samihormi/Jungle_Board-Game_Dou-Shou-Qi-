@@ -5,6 +5,7 @@ import hk.edu.polyu.comp.comp2021.jungle.model.Board;
 import hk.edu.polyu.comp.comp2021.jungle.model.Player;
 import hk.edu.polyu.comp.comp2021.jungle.model.Position;
 
+import javax.swing.*;
 import java.util.Objects;
 
 /**
@@ -50,9 +51,11 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                         }
                         else if(blocks[p1.getY()][p1.getX()].getA().getRank() == 1){
                             if(blocks[p1.getY()][p1.getX()].getBlockType()!=1){
-                                if(blocks[p1.getY()][p1.getX()].getA().getPly().getId()!= blocks[p2.getY()][p2.getX()].getA().getPly().getId()){
-                                    eat(p1, p2);
-                                    return 1;
+                                if(blocks[p1.getY()][p1.getX()].getA().getRank() >= blocks[p2.getY()][p2.getX()].getA().getRank()) {
+                                    if (blocks[p1.getY()][p1.getX()].getA().getPly().getId() != blocks[p2.getY()][p2.getX()].getA().getPly().getId()) {
+                                        eat(p1, p2);
+                                        return 1;
+                                    }
                                 }
                             }
                         }
@@ -123,7 +126,7 @@ public class BoardController {//0=plain, 1=river, 2=trap, 3=goal
                 }
             }
         }
-        System.out.println("Invalid move");
+        JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
         return 0;
     }
     private boolean checkThereIsRat(Position p,Position d,String x){

@@ -374,6 +374,8 @@ public class TableView {
                         position[0] = new Position(tileY, tileX);
                         isFrist=true;
                     }
+                    else
+                        JOptionPane.showMessageDialog(null,"invalid move","ERROR_MESSAGE",JOptionPane.ERROR_MESSAGE);
                 }
                 else{
                     System.out.println(tileY+","+tileX);
