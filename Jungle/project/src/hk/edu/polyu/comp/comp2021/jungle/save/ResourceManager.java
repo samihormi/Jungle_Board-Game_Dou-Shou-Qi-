@@ -30,13 +30,18 @@ public class ResourceManager {
      * @throws Exception if cannot be loaded
      */
     public static Object load(String fileName) throws Exception {
+        boolean success=false;
         JFileChooser jfc = new JFileChooser(".");
         int status=jfc.showOpenDialog(null);
         if(status==JFileChooser.APPROVE_OPTION){
-            System.out.println(jfc.getSelectedFile().getName());
-            try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(jfc.getSelectedFile().getName())))) {
-                return ois.readObject();
+            String str = jfc.getSelectedFile().getName();
+            if(str.substring(str.length()-5,str.length()).equals(".save")) {
+                try (ObjectInputStream ois = new ObjectInputStream(Files.newInputStream(Paths.get(jfc.getSelectedFile().getName())))) {
+                    return ois.readObject();
+                }
             }
+            else
+                JOptionPane.showMessageDialog(null,"You should load *.save file.");
         }
         return null;
     }
