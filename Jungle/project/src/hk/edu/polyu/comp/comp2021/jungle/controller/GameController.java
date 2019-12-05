@@ -10,6 +10,7 @@ import hk.edu.polyu.comp.comp2021.jungle.model.*;
 import javax.swing.*;
 
 public class GameController {
+    private int pause = 200;
     public Player player1;
     public Player player2;
     public Player turn;
@@ -58,7 +59,7 @@ public class GameController {
             System.out.println("turn:"+turn.getId());
             while (!tableView.isFinished()) {
                 p= tableView.getInputFromTable(turn); // p[0] = current location p[1]=destination
-                Thread.sleep(200);
+                Thread.sleep(pause);
             }
             System.out.println("p[o]xy:("+p[0].getX()+","+p[0].getY()+") p[1]xy("+p[1].getX()+","+p[1].getY()+")");
             if(boardController.moveRules(p[0],p[1])==1) // valid move = 1, invalid move = 0
