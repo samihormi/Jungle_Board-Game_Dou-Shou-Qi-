@@ -3,7 +3,13 @@ package hk.edu.polyu.comp.comp2021.jungle.model;
 import org.junit.Assert;
 import org.junit.Test;
 
+/**
+     * Board Class Test
+     */
 public class BoardTest {
+    /**
+     * Full Board Class Testing
+     */
     @Test
     public void boardTest() throws Exception{
         Player player1 = new Player("John", 1);
