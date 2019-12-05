@@ -3,12 +3,11 @@ package hk.edu.polyu.comp.comp2021.jungle.controller;
 import hk.edu.polyu.comp.comp2021.jungle.View.TableView;
 import hk.edu.polyu.comp.comp2021.jungle.model.*;
 
+import javax.swing.*;
 /**
  * Starts the game
  * Displays the game screen
  */
-import javax.swing.*;
-
 public class GameController {
     private int pause = 200;
     private Player player1;
@@ -42,6 +41,13 @@ public class GameController {
         this.turn = turn;
     }
 
+    /**
+    * Responsible for preparing variable
+    * Starts the Game
+    * @param player1_name Name1
+    * @param player2_name Name2
+    * @throws InterruptedException for interruption 
+    */
     public void prepareStartGame(String player1_name,String player2_name) throws InterruptedException{
         player1 = new Player(player1_name, 1);
         player2 = new Player(player2_name, 2);
@@ -51,7 +57,11 @@ public class GameController {
         StartGame(tableView);
     }
 
-
+    /**
+    * The actual method that runs the game
+    * Displays the game screen
+    * @param tableView Display
+    */
     public void StartGame(TableView tableView) throws InterruptedException{
         BoardController boardController = new BoardController(board);
         Position p[]=null;
