@@ -18,8 +18,8 @@ public class Application {
     /**
      *
      * @param args main function
-     * @throws NullPointerException
-     * @throws InterruptedException
+     * @throws NullPointerException if null appears
+     * @throws InterruptedException in case for interruptions
      */
     public static void main(String[] args) throws NullPointerException, InterruptedException {
         Scanner input = new Scanner(System.in);
