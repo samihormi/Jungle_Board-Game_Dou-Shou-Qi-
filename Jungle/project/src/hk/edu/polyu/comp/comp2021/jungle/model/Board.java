@@ -13,7 +13,8 @@ public class Board implements java.io.Serializable{
      * Calling Board constructor initializes a board
      * Board initialization can be moved if necessary(for using animal objects)
      *
-     * @return Nothing
+     * @param player1 First Player
+     * @param player2 Second Player
      */
     public Board(Player player1,Player player2){
         Block[][] blocks = new Block[9][7];
