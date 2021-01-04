@@ -28,7 +28,7 @@ An alternative way to win is to capture all the opponent's pieces.
   
 
 # Running the Game
-To run the game, run "*Appication.java*" under Jungle/project/src/hk/edu/polyu/comp/comp2021/jungle/
+To run the game, run "*Application.java*" under Jungle/project/src/hk/edu/polyu/comp/comp2021/jungle/
 ![Image of WelcomeScreen](https://github.com/samihormi/Jungle_Board-Game_Dou-Shou-Qi-/blob/master/Jungle/project/src/hk/edu/polyu/comp/comp2021/jungle/view/sources/JungleGame_WelcomeScreen.png)
 * You will be prompted to start a new game or load an existing one.
 
